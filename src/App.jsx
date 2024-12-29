@@ -4,6 +4,7 @@ import Home from './components/pages/Home'
 import Login from './components/pages/Login'
 import SignUp from './components/pages/SignUp'
 import AdminHome from './components/pages/AdminHome'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
      <BrowserRouter>
+     <Toaster/>
 
      <Routes path="/*">
 

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 
 function Login() {
 
@@ -14,10 +15,13 @@ function Login() {
     }).then(
       (res)=>{
        
+       
         if(res.data.user== null){
+          toast.error(res.data.message)
           return
         }
-
+        
+        toast.success("Login success")
         localStorage.setItem("token",res.data.token)
         
         if(res.data.user.type == "admin"){
