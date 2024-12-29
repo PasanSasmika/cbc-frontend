@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
 function AdminProducts() {
@@ -25,14 +25,35 @@ function AdminProducts() {
       }
   ]
   )
-  console.log(products)
 
-axios.get("http://localhost:5000/api/products").then((res)=>{
-    console.log(res)
-})
+  useEffect(
+    ()=>{
+      axios.get("http://localhost:5000/api/products").then((res)=>{
+        console.log(res.data)
+        setProducts(res.data)
+    })
+    },[]
+  )
+  
+
+
 
   return (
-    <div>fgdf</div>
+    <div>
+      <h1>Admin product page</h1>
+
+      {
+        products.map((product, index)=>{
+          return(
+            <div key={product._id}>
+            
+              {product.productName}
+
+            </div>
+          )
+        })
+      }
+    </div>
   )
 }
 
