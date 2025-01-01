@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { FaTachometerAlt, FaBox, FaShoppingCart, FaUsers } from 'react-icons/fa';
 import AdminProducts from './adminPages/AdminProducts';
+import AddproductForm from './adminPages/AddproductForm';
 
 function AdminHome() {
   return (
@@ -27,12 +28,14 @@ function AdminHome() {
       </div>
 
      
-      <div className="w-[80%] h-screen bg-red-600">
+      <div className="w-[80%] h-screen bg-pink-200">
       <Routes path="/*">
       <Route path='/dashboard' element={<h1>dashboard</h1>}/>
      <Route path='/orders' element={<h1>orders</h1>}/>
      <Route path='/customers' element={<h1>customers</h1>}/>
      <Route path='/products' element={<AdminProducts/>}/>
+     <Route path='/products/addproducts' element={<AddproductForm/>}/>
+
      <Route path='/*' element={<h1>Error</h1>}/>
 
 </Routes>
