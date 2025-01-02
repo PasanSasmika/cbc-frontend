@@ -3,16 +3,21 @@ import axios from 'axios'
 import { FaPlus, FaTrash } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function AdminProducts() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  const [productLoded, setProductsLoded] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products").then((res) => {
-      console.log(res.data)
-      setProducts(res.data)
-    })
-  }, [])
+    if(!productLoded){
+      axios.get("http://localhost:5000/api/products").then((res) => {
+        setProducts(res.data);
+        setProductsLoded(true);
+      })
+    }
+   
+  }, [productLoded])
 
   return (
     <div className="p-6 max-w-7xl mx-auto relative">
@@ -21,43 +26,66 @@ function AdminProducts() {
       
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Admin Product Page</h1>
       
+     {
+      productLoded?
       <div className="overflow-x-auto bg-white rounded-lg shadow">
-        <table className="min-w-full">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Product Id</th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Product Name</th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Price</th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Last price</th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Stock</th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Description</th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Action</th>
+      <table className="min-w-full">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Product Id</th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Product Name</th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Price</th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Last price</th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Stock</th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Description</th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Action</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-200">
+          {products.map((product, index) => (
+            <tr key={index} className="hover:bg-gray-50">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.productId}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.productName}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${product.price}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${product.lastPrice}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.stock}</td>
+              <td className="px-6 py-4 text-sm text-gray-700 max-w-xs truncate">{product.description}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <div className="flex gap-4">
+                  <button className="text-red-600 hover:text-red-800" title="Delete"
+                  
+                  onClick={()=>{
+                    const token = localStorage.getItem("token");
+
+                    axios.delete(`http://localhost:5000/api/products/${product.productId}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    }).then((res)=>{
+                      console.log(res.data);
+                      toast.success("Product deleted successfully");
+                      setProductsLoded(false);
+                    });
+
+                  }}>
+                    <FaTrash />
+                  </button>
+                  <button className="text-blue-600 hover:text-blue-800">
+                    <FaPencil />
+                  </button>
+                </div>
+              </td>
             </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200">
-            {products.map((product, index) => (
-              <tr key={index} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.productId}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.productName}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${product.price}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${product.lastPrice}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.stock}</td>
-                <td className="px-6 py-4 text-sm text-gray-700 max-w-xs truncate">{product.description}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                  <div className="flex gap-4">
-                    <button className="text-red-600 hover:text-red-800">
-                      <FaTrash />
-                    </button>
-                    <button className="text-blue-600 hover:text-blue-800">
-                      <FaPencil />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
+    </div>: 
+    <div className='w-full h-full flex justify-center items-center'>
+      <div className='w-[60px] h-[60px] border-[4px] border-gray-200 border-b-[#3b82f6] animate-spin rounded-full'></div>
+
+    </div>
+
+     }
     </div>
   )
 }
