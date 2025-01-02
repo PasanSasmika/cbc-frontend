@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 function AddProductForm() {
   const [productId, setProductId] = useState("");
@@ -11,7 +12,7 @@ function AddProductForm() {
   const [lastPrice, setLastPrice] = useState("");
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
-
+    const navigate  =  useNavigate()
   async function handleSubmit() {
 
     const altNames = alternativeNames.split(",")
@@ -37,6 +38,7 @@ function AddProductForm() {
           Authorization : "Bearer "+token
         }
       })
+      navigate("/admin/products")
       toast.success("Product added successfully..!")
     } catch (error) {
       toast.error("Failed to add product..!")
