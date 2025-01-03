@@ -4,4 +4,4 @@ superbase@123
 
 
 
-url = https://dyfwvxfjvhphteeztwgj.supabase.co
+ https://dyfwvxfjvhphteeztwgj.supabase.co
