@@ -30,7 +30,7 @@ function AdminHome() {
      
       <div className="w-[80%] h-screen bg-pink-200">
       <Routes path="/*">
-      <Route path='/dashboard' element={<h1>dashboard</h1>}/>
+      <Route path='/' element={<h1>dashboard</h1>}/>
      <Route path='/orders' element={<h1>orders</h1>}/>
      <Route path='/customers' element={<h1>customers</h1>}/>
      <Route path='/products' element={<AdminProducts/>}/>
