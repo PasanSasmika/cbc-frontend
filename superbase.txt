@@ -1,0 +1,7 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5Znd2eGZqdmhwaHRlZXp0d2dqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU4Njc2NTUsImV4cCI6MjA1MTQ0MzY1NX0.iL1_XZ8BGSt1A00HkmU3sbuOp8tR6F5ZUFgt7Zx51Jk
+
+superbase@123
+
+
+
+url = https://dyfwvxfjvhphteeztwgj.supabase.co
