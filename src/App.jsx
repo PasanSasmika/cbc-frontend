@@ -1,11 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Home from './components/pages/Home'
-import Login from './components/pages/Login'
-import SignUp from './components/pages/SignUp'
-import AdminHome from './components/pages/AdminHome'
+import AdminHome from './pages/adminPages/AdminHome'
 import { Toaster } from 'react-hot-toast'
-import Testing from './components/pages/Testing'
+import Home from './pages/homepages/Home'
+import SignUp from './pages/homepages/SignUp'
+import Login from './pages/homepages/Login'
+import Testing from './pages/adminPages/Testing'
+
+
 
 function App() {
   

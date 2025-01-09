@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { FaTachometerAlt, FaBox, FaShoppingCart, FaUsers } from 'react-icons/fa';
-import AdminProducts from './adminPages/AdminProducts';
-import AddproductForm from './adminPages/AddproductForm';
+import AdminProducts from './AdminProducts';
+import AddproductForm from './AddproductForm';
 
 function AdminHome() {
   return (
