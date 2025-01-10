@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        main: ["Playfair Display"], 
+        second: ["Bonheur Royale"],
+        third: ["Alumni Sans"] 
+      }
+    },
   },
   plugins: [],
 }
