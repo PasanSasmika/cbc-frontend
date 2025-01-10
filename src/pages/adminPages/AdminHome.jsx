@@ -13,9 +13,9 @@ function AdminHome() {
   const [notIsopen, setNotIsOpen] = useState(null);
 
   return (
-    <div className="w-full  h-screen bg-[#F1EBE7] absolute flex items-center justify-center">
-      <div className="w-[1494px] h-[97vh] bg-[#F0F6F6] rounded-[16px]">
-        <div className="w-[20%] h-[97vh] rounded-[16px] bg-[#E7DED8]">
+    <div className="w-full  h-screen bg-[#E7DED8] absolute flex items-center justify-center">
+      <div className="w-[276px] h-[97vh] bg-[#E7DED8] rounded-[16px]">
+        <div className="w-[100%] h-[97vh] rounded-[16px] bg-[#E7DED8]">
           <h1 className="flex items-center justify-center text-[26px] p-6">
             Dashboard
           </h1>
@@ -113,19 +113,20 @@ function AdminHome() {
           </div>
         </div>
       </div>
-      <div className="w-[80%] h-screen bg-pink-200">
-      <Routes path="/*">
-      <Route path='/' element={<h1>dashboard</h1>}/>
-     <Route path='/orders' element={<h1>orders</h1>}/>
-     <Route path='/customers' element={<h1>customers</h1>}/>
-     <Route path='/products' element={<AdminProducts/>}/>
-     <Route path='/products/addproducts' element={<AddproductForm/>}/>
+      
 
-     <Route path='/*' element={<h1>Error</h1>}/>
 
-</Routes>
+      <div className="w-[80%] h-[97vh] rounded-[16px] ml-2 bg-[#FBFCFC]">
+  <Routes path="/*">
+    <Route path='/' element={<h1>dashboard</h1>}/>
+    <Route path='/orders' element={<h1>orders</h1>}/>
+    <Route path='/customers' element={<h1>customers</h1>}/>
+    <Route path='/products' element={<AdminProducts/>}/>
+    <Route path='/products/addproducts' element={<AddproductForm/>}/>
+    <Route path='/*' element={<h1>Error</h1>}/>
+  </Routes>
+</div>    
       </div>
-    </div>
 
      
       
