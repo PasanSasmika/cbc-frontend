@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { FaPlus, FaTrash } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 function AdminProducts() {
@@ -17,7 +17,9 @@ function AdminProducts() {
       })
     }
    
-  }, [productLoded])
+  }, [productLoded]);
+
+  const navigate = useNavigate();
 
   return (
     <div className="p-6 max-w-7xl mx-auto relative">
@@ -70,7 +72,11 @@ function AdminProducts() {
                   }}>
                     <FaTrash />
                   </button>
-                  <button className="text-blue-600 hover:text-blue-800">
+
+                  <button className="text-blue-600 hover:text-blue-800" title='Edit' 
+                  onClick={()=>{
+                    navigate("/admin/products/editproduct" , {state : {product : product}});
+                  }}>
                     <FaPencil />
                   </button>
                 </div>

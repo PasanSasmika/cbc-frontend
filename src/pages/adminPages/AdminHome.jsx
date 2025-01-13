@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import AdminProducts from './AdminProducts';
 import AddproductForm from './AddproductForm';
 import { Animation, Animation2 } from '../../animations/animation';
+import EditProductForm from './EditProductForm';
 
 function AdminHome() {
 
@@ -123,6 +124,7 @@ function AdminHome() {
     <Route path='/customers' element={<h1>customers</h1>}/>
     <Route path='/products' element={<AdminProducts/>}/>
     <Route path='/products/addproducts' element={<AddproductForm/>}/>
+    <Route path='/products/editproduct' element={<EditProductForm/>}/>
     <Route path='/*' element={<h1>Error</h1>}/>
   </Routes>
 </div>    
