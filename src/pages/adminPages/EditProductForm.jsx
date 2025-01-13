@@ -9,19 +9,22 @@ function EditProductForm() {
    const location = useLocation()
    const navigate  =  useNavigate()
 
-    const product = location.state.product
+   const product = location.state.product
+
     if(product == null){
         navigate("/admin/products")
     }
+
+    const altNames = product.altNames.join(",")
   
-  const [productId, setProductId] = useState("");
-  const [productName, setProductName] = useState("");
-  const [alternativeNames, setAlternativeNames] = useState("");
+  const [productId, setProductId] = useState(product.productId);
+  const [productName, setProductName] = useState(product.productName);
+  const [alternativeNames, setAlternativeNames] = useState(altNames);
   const [imageFiles, setImageFiles] = useState([]);
-  const [price, setPrice] = useState("");
-  const [lastPrice, setLastPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(product.price);
+  const [lastPrice, setLastPrice] = useState(product.lastPrice);
+  const [stock, setStock] = useState(product.stock);
+  const [description, setDescription] = useState(product.description);
 
 
   async function handleSubmit() {
@@ -29,16 +32,21 @@ function EditProductForm() {
     const altNames = alternativeNames.split(",")
     const promiseArray = []
 
-    for(let i=0; i<imageFiles.length; i++){
-      promiseArray[i] = uploadMediaToSupabase
-      (imageFiles[i])
-    }
+    let imgUrls = product.Images
+    if(imageFiles.length > 0 ){
 
-    const imgUrls = await Promise.all(promiseArray)
+        for(let i=0; i<imageFiles.length; i++){
+            promiseArray[i] = uploadMediaToSupabase
+            (imageFiles[i])
+          }
+      
+           imgUrls = await Promise.all(promiseArray)
+    } 
+    
    
 
 
-    const product = {
+    const productData = {
       
       productId : productId,
       productName : productName,
@@ -53,13 +61,13 @@ function EditProductForm() {
     const token = localStorage.getItem("token")
 
     try {
-      await axios.post(import.meta.env.VITE_BACKEND_URL +"/api/products", product,{
+        await axios.put(import.meta.env.VITE_BACKEND_URL+"/api/products/"+product.productId,productData,{
         headers : {
           Authorization : "Bearer "+token
         }
       })
       navigate("/admin/products")
-      toast.success("Product added successfully..!")
+      toast.success("Product Update successfully..!")
     } catch (error) {
       toast.error("Failed to add product..!")
     }
@@ -75,6 +83,7 @@ function EditProductForm() {
           <div className="space-y-2">
             <label className="text-sm font-medium">Product ID</label>
             <input
+              disabled
               type="text"
               className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={productId}
@@ -156,7 +165,7 @@ function EditProductForm() {
             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
             onClick={handleSubmit}
           >
-            Add Product
+            Update Product
           </button>
         </div>
       </div>
@@ -167,3 +176,4 @@ function EditProductForm() {
 export default EditProductForm;
 
 
+//https://cbc-backend-d9u5.onrender.com 
