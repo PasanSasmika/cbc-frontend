@@ -2,6 +2,8 @@ import axios from 'axios'
 import { div, span } from 'framer-motion/client';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { addToCart } from '../../utils/cartFunctions';
+import toast from 'react-hot-toast';
 
 function ProductOverview() {
 
@@ -26,7 +28,12 @@ function ProductOverview() {
         setStatus("found")
       }
     })
-  },[])
+  })
+
+  function onAddtoCartClick(){
+    addToCart(product.productId,1)
+    toast.success(product.productName+ " Added to cart")
+  }
 
   return (
     <div className='w-full h-full'>
@@ -63,6 +70,7 @@ function ProductOverview() {
         <img src={product.Images[2]} alt="" className='w-9 h-9' />
 
       </div>
+      <button onClick={onAddtoCartClick}>Add to cart</button>
           </div>
         )
       }

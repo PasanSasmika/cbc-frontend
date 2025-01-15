@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import ProductOverview from './ProductOverview'
 import Products from './Products'
+import Cart from './Cart'
+import { FaOpencart } from 'react-icons/fa'
 
 function Home() {
   return (
@@ -20,6 +22,13 @@ function Home() {
           
           Contact us
         </Link>
+
+        <Link to="/cart" className="flex items-center gap-2 text-lg hover:text-blue-200">
+          
+         <FaOpencart/>
+        </Link>
+
+        
       </div>
 
      
@@ -28,6 +37,7 @@ function Home() {
       <Route path='/' element={<h1>Home</h1>}/>
      <Route path='/products' element={<Products/>}/>
      <Route path='/productInfo/:id' element={<ProductOverview/>}/>
+     <Route path='/cart' element={<Cart/>}/>
      <Route path='/contact' element={<h1>contact</h1>}/>
      <Route path='/*' element={<h1>Error</h1>}/>
 

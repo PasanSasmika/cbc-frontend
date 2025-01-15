@@ -7,7 +7,7 @@ function ProductCard(props) {
         <div className='flex flex-col items-center'>
             <img src={props.product.Images[0]} alt={props.product.productName} 
             className='h-40 w-40 object-cover' />
-            <h1>{props.product.ProductName}</h1>
+            <h1>{props.product.productName}</h1>
             <h1>{props.product.lastPrice.toFixed(2)}</h1>
             {
                 (props.product.lastPrice<props.product.price)&&
