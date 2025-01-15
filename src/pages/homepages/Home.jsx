@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import ProductOverview from './ProductOverview'
+import Products from './Products'
 
 function Home() {
   return (
@@ -25,7 +26,7 @@ function Home() {
       <div className="w-full h-screen bg-yellow-600 flex flex-col">
       <Routes path="/*">
       <Route path='/' element={<h1>Home</h1>}/>
-     <Route path='/products' element={<h1>product</h1>}/>
+     <Route path='/products' element={<Products/>}/>
      <Route path='/productInfo/:id' element={<ProductOverview/>}/>
      <Route path='/contact' element={<h1>contact</h1>}/>
      <Route path='/*' element={<h1>Error</h1>}/>
