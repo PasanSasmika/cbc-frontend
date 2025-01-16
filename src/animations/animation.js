@@ -24,3 +24,21 @@ export const Animation = () => ({
       }
       
   });
+
+  
+  export const HomePageAnimation = () => ({
+
+    initial:{
+        scale: 1.5
+      },
+      
+      animate:{
+        scale: 1
+      
+      },
+      transition:{
+        duration:1.3,
+       
+      }
+      
+  });

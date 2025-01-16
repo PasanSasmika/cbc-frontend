@@ -5,7 +5,7 @@ import Login from './Login'
 
 
 function Home() {
- 
+    
   return (
     <>
     <div className='h-full flex bg-primary'>
