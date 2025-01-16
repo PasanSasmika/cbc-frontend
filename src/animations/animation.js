@@ -29,7 +29,7 @@ export const Animation = () => ({
   export const HomePageAnimation = () => ({
 
     initial:{
-        scale: 1.5
+        scale: 1.8,
       },
       
       animate:{
@@ -40,5 +40,5 @@ export const Animation = () => ({
         duration:1.3,
        
       }
-      
+   
   });

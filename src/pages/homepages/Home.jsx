@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react'
 import home from '../../../public/home1.jpg'
 import Login from './Login'
+import { motion } from 'framer-motion' 
+import { HomePageAnimation } from '../../animations/animation'
 
 
 
 function Home() {
-    
+
+    useEffect(()=>{
+        HomePageAnimation()
+    },[])
   return (
     <>
     <div className='h-full flex bg-primary'>
@@ -21,7 +26,7 @@ function Home() {
         </div>
       </div>
       <div className='w-[65%] bg-primary flex items-center z-10'>
-        <img src={home} alt="" className='w-[1040px] h-[573px] rounded-md object-cover right-9 relative top-3' />
+        <motion.img src={home} alt="" {...HomePageAnimation()} className='w-[1040px] h-[573px] rounded-md object-cover right-9 relative top-3' />
       </div>
       
     </div>
