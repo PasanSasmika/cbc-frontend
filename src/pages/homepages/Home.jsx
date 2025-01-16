@@ -4,32 +4,14 @@ import ProductOverview from './ProductOverview'
 import Products from './Products'
 import Cart from './Cart'
 import { FaOpencart } from 'react-icons/fa'
+import Header from '../../components/Header'
 
 function Home() {
   return (
     <>
   <div className="bg-blue-200 w-full h-screen">
-      {/* Sidebar */}
-      <div className="w-full h-5 bg-blue-500 flex gap-7 flex-row justify-center items-center py-8 space-y-6 text-white">
-        <Link to="/" className="flex items-center gap-2 text-lg hover:text-blue-200">
-          Home
-        </Link>
-        <Link to="/products" className="flex items-center gap-2 text-lg hover:text-blue-200">
-         
-          Products
-        </Link>
-        <Link to="/contact" className="flex items-center gap-2 text-lg hover:text-blue-200">
-          
-          Contact us
-        </Link>
-
-        <Link to="/cart" className="flex items-center gap-2 text-lg hover:text-blue-200">
-          
-         <FaOpencart/>
-        </Link>
-
-        
-      </div>
+     <Header/>
+      
 
      
       <div className="w-full h-screen bg-yellow-600 flex flex-col">
