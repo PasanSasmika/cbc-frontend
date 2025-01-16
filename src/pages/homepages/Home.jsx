@@ -1,31 +1,32 @@
-import React from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
-import ProductOverview from './ProductOverview'
-import Products from './Products'
-import Cart from './Cart'
-import { FaOpencart } from 'react-icons/fa'
-import Header from '../../components/Header'
+import React, { useEffect } from 'react'
+import home from '../../../public/home1.jpg'
+import Login from './Login'
+
+
 
 function Home() {
+ 
   return (
     <>
-  <div className="bg-blue-200 w-full h-screen">
-     <Header/>
-      
-
-     
-      <div className="w-full h-screen bg-yellow-600 flex flex-col">
-      <Routes path="/*">
-      <Route path='/' element={<h1>Home</h1>}/>
-     <Route path='/products' element={<Products/>}/>
-     <Route path='/productInfo/:id' element={<ProductOverview/>}/>
-     <Route path='/cart' element={<Cart/>}/>
-     <Route path='/contact' element={<h1>contact</h1>}/>
-     <Route path='/*' element={<h1>Error</h1>}/>
-
-</Routes>
+    <div className='h-full flex bg-primary'>
+      <div className='w-[35%] h-[650px] bg-primary flex items-center'>
+        <div className='relative bottom-14 left-32 z-20'>
+          <h1 className='text-[85px] text-black font-medium font-main'>Discover the beauty within</h1>
+          <div className='absolute'>
+            <h1 className='text-[198px] font-second text-secondary relative bottom-24 left-80'>you</h1>
+          </div>
+          <div className='absolute'>
+            <h1 className='text-[33px] font-accent text-secondary relative top-12 '>view all collection</h1>
+          </div>
+        </div>
       </div>
+      <div className='w-[65%] bg-primary flex items-center z-10'>
+        <img src={home} alt="" className='w-[1040px] h-[573px] rounded-md object-cover right-9 relative top-3' />
+      </div>
+      
     </div>
+
+        <Login/>
     </>
   )
 }
