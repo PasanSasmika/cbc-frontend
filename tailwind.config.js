@@ -9,7 +9,7 @@ export default {
       fontFamily: {
         main: ["Playfair Display"], 
         second: ["Bonheur Royale"],
-        accent: ["Alumni Sans"] 
+        accent: ["Inter"] 
       },
       colors:{
         primary:"#F1EBE7",

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import home from '/home1.jpg'
+import home from '/image9.jpg'
 import { motion } from 'framer-motion' 
 import { HomePageAnimation, HomePageAnimation2 } from '../../animations/animation'
 import SkinImprove from './SkinImprove'
@@ -15,7 +15,7 @@ function Home() {
     <>
     <div className='h-full flex bg-primary'>
       <div className='w-[35%] h-[650px] bg-primary flex items-center'>
-        <motion.div {...HomePageAnimation2()} className='relative bottom-14 left-32 z-20'>
+        <motion.div {...HomePageAnimation2()}  className='relative bottom-14 left-32 z-20'>
           <h1 className='text-[85px] text-black font-medium font-main'>Discover the beauty within</h1>
           <div className='absolute'>
             <h1 className='text-[198px] font-second text-secondary relative bottom-24 left-80'>you</h1>

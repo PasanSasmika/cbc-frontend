@@ -31,11 +31,11 @@ function SkinImprove() {
         <motion.div {...HomePageAnimation2()} className="w-[55%] h-[550px] bg-accent p-16 ">
           <div className="flex flex-col">
             <div><h1 className="font-second  text-secondary text-[44px]">Careskin</h1></div>
-            <div className="w-[600px]"><h1 className="font-main font-medium text-[55px]">Unveil natural radiance</h1></div>
-            <div className="w-[574px]"><h1 className="font-accent text-[34px] mt-5">True beauty radiates from those who strive to feel beautiful for themselves</h1></div>
-            <div><h1 className="text-[27px] font-accent text-secondary mt-5">Shop All</h1></div>
+            <div className="w-[600px]"><h1 className="font-main font-medium text-[45px]">Next-Gen Skincare for Lasting Glow</h1></div>
+            <div className="w-[594px]"><h1 className="font-accent text-[22px] mt-7">True beauty radiates from those who strive to feel beautiful for themselves</h1></div>
+            <div><h1 className="text-[18px] font-accent text-secondary mt-7">Shop All</h1></div>
           </div>
-          <div className="w-16 h-16 ml-16 relative">
+          <div className="w-14 h-14 ml-20 relative">
             <motion.img src={image2}  {...SkinImprove3()} alt=""  className=" absolute bottom-9 opacity-90"/>
           </div>
         </motion.div>

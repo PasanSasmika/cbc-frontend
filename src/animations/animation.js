@@ -95,3 +95,12 @@ export const SkinImprove2 = () => ({
   transition: { duration: 1 },
   
 });
+
+
+export const Headeranimation = () => ({
+
+  initial : { x: -300},
+  whileInView : {x: 0 },
+  transition: { duration: 1 },
+  
+});
