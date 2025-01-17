@@ -1,44 +1,33 @@
 import React from "react";
-import image1 from "../../../public/image1.jpg";
-import image2 from "../../../public/image2.jpg";
-import image3 from "../../../public/image32.png";
-import { motion } from 'framer-motion' 
-import { HomePageAnimation2, SkinImprove1, SkinImprove3 } from "../../animations/animation";
+import image1 from "/image7.jpg";
+import image2 from "/image32.png";
 
 
 function SkinImprove() {
   return (
-    <div className="h-screen w-full flex bg-yellow-300">
-      <div className="flex bg-primary h-full w-[50%] relative">
-        <motion.div {...SkinImprove1()} className="flex items-center justify-center">
+    <div className="h-screen w-full bg-primary">
+      <div className="w-full h-[650px] bg-accent flex items-center relative top-24">
+        {/* Left Section */}
+        <div className="w-[45%] h-[555px] flex items-center justify-center relative">
           <img
-            src={image2}
-            alt=""
-            className="w-[390px] h-[600px] object-cover relative left-24 z-10"
+            src={image1}
+            alt="Main Skin Image"
+            className="w-[600px] h-full object-cover absolute right-0"
           />
-          <div className="relative z-20">
-            <img
-              src={image1}
-              alt=""
-              className="w-[360px] h-[400px] object-cover"
-            />
-            <div className=" absolute bottom-0 right-0 -z-10">
-                <motion.img {...SkinImprove3()} src={image3} alt="" className="w-32 h-32 relative top-14 left-20" />
-            </div>
-          </div>
-        </motion.div>
-      </div>
-      <div className="flex items-center justify-center bg-primary h-full w-[50%]">
-        <div className=" absolute">
-            <motion.h1 {...HomePageAnimation2()} className="text-[47px] text-black font-medium font-main relative bottom-52">Improve your skin’s <br></br>well-begin with our </motion.h1>
         </div>
-        <div className=" absolute">
-        <motion.h1 {...HomePageAnimation2()} className="text-[80px] text-secondary font-medium font-second relative bottom-16">Skincare</motion.h1>
-        </div>
-        <div className='absolute'>
-            <motion.h1 {...HomePageAnimation2()} transition={{duration: 1.2}} className='text-[26px] font-accent text-secondary relative top-3 '>Shop here</motion.h1>
+
+        {/* Right Section */}
+        <div className="w-[55%] h-[550px] bg-accent p-12 ">
+          <div className="flex flex-col">
+            <div><h1 className="font-main text-[34px]">Careskin</h1></div>
+            <div className="w-[600px]"><h1 className="font-main font-medium text-[55px]">Illuminate your natural essence.</h1></div>
+            <div className="w-[574px]"><h1 className="font-accent text-[34px] mt-5">True beauty radiates from those who strive to feel beautiful for themselves</h1></div>
+            <div><h1 className="text-[27px] font-accent text-secondary mt-5">Shop All</h1></div>
           </div>
-          
+          <div className="w-16 h-16 ml-20 relative">
+            <img src={image2} alt=""  className=" absolute bottom-9 opacity-90"/>
+          </div>
+        </div>
       </div>
     </div>
   );

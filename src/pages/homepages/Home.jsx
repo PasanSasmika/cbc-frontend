@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import home from '../../../public/home1.jpg'
+import home from '/home1.jpg'
 import { motion } from 'framer-motion' 
 import { HomePageAnimation, HomePageAnimation2 } from '../../animations/animation'
 import SkinImprove from './SkinImprove'
@@ -32,6 +32,7 @@ function Home() {
     </div>
 
       <SkinImprove/>
+  
     </>
   )
 }
