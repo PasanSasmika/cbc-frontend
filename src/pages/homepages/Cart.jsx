@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { loadCart } from '../../utils/cartFunctions'
 import { div } from 'framer-motion/client'
+import CartCard from '../../components/CartCard'
 
 
 function Cart() {
@@ -15,19 +16,21 @@ useEffect(
   )
 
   return (
-    <div className='w-full h-full overflow-y-scroll'>
+    <div className='w-full h-full overflow-y-scroll flex flex-col items-center'>
          {
             cart.map(
                 (item)=>{
                     return(
-                         <span>{item.productId} X {item.qty}</span>
-                       
+                     
+                        <CartCard key={item.productId} productId ={item.productId}
+                        qty={item.qty}/>
+                        
                     )
                 }
             )
         } 
 
-   
+   <button>Checkout</button>
     </div>
   )
 }

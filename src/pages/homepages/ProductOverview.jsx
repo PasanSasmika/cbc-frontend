@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { div, span } from 'framer-motion/client';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { addToCart } from '../../utils/cartFunctions';
