@@ -3,6 +3,7 @@ import home from '/image9.jpg'
 import { motion } from 'framer-motion' 
 import { HomePageAnimation, HomePageAnimation2 } from '../../animations/animation'
 import SkinImprove from './SkinImprove'
+import GlowCollection from './GlowCollection'
 
 
 
@@ -32,6 +33,7 @@ function Home() {
     </div>
 
       <SkinImprove/>
+      <GlowCollection/>
   
     </>
   )
