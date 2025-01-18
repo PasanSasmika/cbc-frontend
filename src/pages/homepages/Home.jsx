@@ -26,7 +26,7 @@ function Home() {
           </div>
         </motion.div>
       </div>
-      <div className='w-[65%] bg-primary flex items-center z-10'>
+      <div className='w-[65%] bg-primary flex items-center z-10'>      
         <motion.img src={home} alt="" {...HomePageAnimation()} className='w-[1040px] h-[573px] rounded-md object-cover right-9 relative top-3' />
       </div>
       
