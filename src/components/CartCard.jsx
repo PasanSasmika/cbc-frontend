@@ -37,10 +37,10 @@ useEffect(()=>{
     <div className='border w-1/2 flex justify-center items-center'>
         <span><img src={product?.Images[0]} alt="" className='w-6 h-6' /></span>
         <span>{productId}</span>
-        <span>{product?.productName}</span>
+        <span className='p-7'>{product?.productName}</span>
         <span>{qty}</span>
         <span>LKR. {product?.lastPrice.toFixed(2)}</span>
-        <span>LKR. {(product?.lastPrice*qty).toFixed(2)}</span>
+        <span  className='p-7'>LKR. {(product?.lastPrice*qty).toFixed(2)}</span>
 
 
     </div>
