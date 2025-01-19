@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import home from '/image9.jpg'
 import { motion } from 'framer-motion' 
 import { HomePageAnimation, HomePageAnimation2 } from '../../animations/animation'
-import SkinImprove from './SkinImprove'
-import GlowCollection from './GlowCollection'
+// import SkinImprove from './SkinImprove'
+// import GlowCollection from './GlowCollection'
 
 
 
@@ -14,7 +14,7 @@ function Home() {
     },[])
   return (
     <>
-    <div className='h-full flex bg-primary'>
+    <div className='h-full flex'>
       <div className='w-[35%] h-[650px] bg-primary flex items-center'>
         <motion.div {...HomePageAnimation2()}  className='relative bottom-14 left-32 z-20'>
           <h1 className='text-[85px] text-black font-medium font-main'>Discover the beauty within</h1>
@@ -32,8 +32,8 @@ function Home() {
       
     </div>
 
-      <SkinImprove/>
-      <GlowCollection/>
+      {/* <SkinImprove/>
+      <GlowCollection/> */}
   
     </>
   )

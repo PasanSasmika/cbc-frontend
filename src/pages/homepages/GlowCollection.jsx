@@ -24,17 +24,19 @@ function GlowCollection() {
     }
   },[])
   return (
-    <div className="h-[105vh] w-full bg-primary flex flex-col absolute justify-center items-center gap-8">
+    <div className="h-screen w-full bg-primary flex flex-col justify-center items-center gap-10 py-12 px-6 ">
     
-    <motion.div {...SkinImprove4()} transition={{duration: 0.9}} className='flex flex-col items-center justify-center relative top-[-64px] '>
-    <h1 className="font-main font-medium text-[45px]">Unleash your inner glow</h1>
-    <h1 className="font-second  text-secondary text-[54px] relative">Collection</h1>
+    <motion.div {...SkinImprove4()} transition={{duration: 0.9}} className='flex flex-col items-center justify-center gap-2'>
+    <h1 className="font-main font-medium text-[42px] md:text-[48px] text-center">Unleash your inner glow</h1>
+    <h1 className="font-second  text-secondary text-[48px] md:text-[54px] relative text-center">Collection</h1>
     </motion.div>
-    <div className="absolute top-[200px] right-40">
-   <Link to="/products"><h1 className="text-[27px] font-accent text-secondary">View all Collection</h1></Link> 
+    <div className="absolute right-16 md:right-32 lg:right-60">
+   <Link to="/products"><h1 className=" relative bottom-36  left-16 text-[20px] md:text-[24px] font-accent  text-secondary
+    hover:after:block after:w-0 after:h-[2px]
+     after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">View all Collection</h1></Link> 
   </div>
 
-    <motion.div {...SkinImprove4()} className='flex justify-center items-center  relative top-5 flex-wrap gap-24 w-full'>
+    <motion.div {...SkinImprove4()} className='flex flex-wrap justify-center items-center gap-8 lg:gap-20 mt-8 w-full px-4'>
 
             
             {

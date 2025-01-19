@@ -1,20 +1,31 @@
-import React from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
-import ProductOverview from './ProductOverview'
-import Products from './Products'
-import Cart from './Cart'
-import { FaOpencart } from 'react-icons/fa'
-import Header from '../../components/Header'
-import Home from './Home'
+import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import ProductOverview from "./ProductOverview";
+import Products from "./Products";
+import Cart from "./Cart";
+import { FaOpencart } from "react-icons/fa";
+import Header from "../../components/Header";
+import Home from "./Home";
+import SkinImprove from "./SkinImprove";
+import GlowCollection from "./GlowCollection";
 
 function CustomerHome() {
   return (
     <>
       <div className="w-full h-screen bg-primary">
-        <Header />
         <div>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <main>
+                  <Header />
+                  <Home />
+                  <SkinImprove/>
+                  <GlowCollection/>
+                </main>
+              }
+            />
             <Route path="/products" element={<Products />} />
             <Route path="/productInfo/:id" element={<ProductOverview />} />
             <Route path="/cart" element={<Cart />} />
@@ -24,7 +35,7 @@ function CustomerHome() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default CustomerHome
+export default CustomerHome;
