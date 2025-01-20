@@ -4,7 +4,7 @@ import image2 from "/image8.jpg";
 import image3 from "/image10.jpg";
 import image4 from "/image14.jpg";
 import { motion } from 'framer-motion' 
-import { HomePageAnimation, HomePageAnimation2 } from "../../animations/animation";
+import { HomePageAnimation2 } from "../../animations/animation";
 
 
 
