@@ -8,6 +8,7 @@ import Header from "../../components/Header";
 import Home from "./Home";
 import SkinImprove from "./SkinImprove";
 import GlowCollection from "./GlowCollection";
+import PassionPage from "./PassionPage";
 
 function CustomerHome() {
   return (
@@ -21,8 +22,10 @@ function CustomerHome() {
                 <main>
                   <Header />
                   <Home />
-                  <SkinImprove/>
+                  <PassionPage/>
                   <GlowCollection/>
+                  <SkinImprove/>
+                  
                 </main>
               }
             />

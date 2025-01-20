@@ -24,7 +24,7 @@ function GlowCollection() {
     }
   },[])
   return (
-    <div className="h-screen w-full bg-primary flex flex-col justify-center items-center gap-10 py-12 px-6 ">
+    <div className="h-[130vh] w-full bg-primary flex flex-col justify-center items-center gap-10 py-12 px-6 ">
     
     <motion.div {...SkinImprove4()} transition={{duration: 0.9}} className='flex flex-col items-center justify-center gap-2'>
     <h1 className="font-main font-medium text-[42px] md:text-[48px] text-center">Unleash your inner glow</h1>

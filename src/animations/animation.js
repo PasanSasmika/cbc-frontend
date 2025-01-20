@@ -43,7 +43,7 @@ export const HomePageAnimation2 = () => ({
 
   whileInView: { opacity: 1, scale: 1 },
   
-  transition: { duration: 1 },
+  transition: { duration: .7 },
   
 });
 
@@ -104,3 +104,4 @@ export const Headeranimation = () => ({
   transition: { duration: 1 },
   
 });
+
