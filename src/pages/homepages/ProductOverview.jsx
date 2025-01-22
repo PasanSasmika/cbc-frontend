@@ -62,6 +62,7 @@ function ProductOverview() {
             <span className='line-through text-red-500'>LKR. {product.price}</span>
             } <span>{"LKR."+product.lastPrice}</span>
       </h1>
+      <h3>{product.category}</h3>
       <h3>{product.description}</h3>
 
       <div>

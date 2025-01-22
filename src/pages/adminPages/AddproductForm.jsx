@@ -12,6 +12,7 @@ function AddProductForm() {
   const [price, setPrice] = useState('');
   const [lastPrice, setLastPrice] = useState('');
   const [stock, setStock] = useState('');
+  const [category,setCategory] = useState('');
   const [description, setDescription] = useState('');
   const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ function AddProductForm() {
       price,
       lastPrice,
       stock,
+      category,
       description
     };
 
@@ -139,6 +141,17 @@ function AddProductForm() {
                 type="number"
                 value={stock}
                 onChange={(e) => setStock(e.target.value)}
+                className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Category
+              </label>
+              <input
+                type="text"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
                 className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
               />
             </div>

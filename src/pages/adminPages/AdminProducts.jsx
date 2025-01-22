@@ -39,6 +39,7 @@ function AdminProducts() {
             <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Price</th>
             <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Last price</th>
             <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Stock</th>
+            <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Category</th>
             <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Description</th>
             <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Action</th>
           </tr>
@@ -51,6 +52,7 @@ function AdminProducts() {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${product.price}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${product.lastPrice}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.stock}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.category}</td>
               <td className="px-6 py-4 text-sm text-gray-700 max-w-xs truncate">{product.description}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                 <div className="flex gap-4">

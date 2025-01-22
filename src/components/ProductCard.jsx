@@ -1,6 +1,4 @@
 import React from 'react'
-import product1 from '/product.jpg'
-import product2 from '/product3.jpg'
 import { Link } from 'react-router-dom'
 
 
@@ -13,7 +11,7 @@ function ProductCard(props) {
       <img src={props.product.Images[1]} alt="Product Image" className='absolute inset-0 w-full h-full object-cover  opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
     </div>
     <div className='bg-accent w-full h-[27%] flex flex-col items-center justify-center gap-2'>
-      <h1 className='font-normal text-[16px] text-gray-600 mt-3'>Serum</h1>
+      <h1 className='font-normal text-[16px] text-gray-600 mt-3'>{props.product.category}</h1>
       <h2 className='font-main text-[23px] font-semibold text-gray-800'>{props.product.productName}</h2>
       <div className='flex items-center justify-center mb-4 gap-5'>
       <h1 className='font-main text-[24px] font-semibold text-[#9c4221]'>{props.product.lastPrice.toFixed(2)}</h1>
