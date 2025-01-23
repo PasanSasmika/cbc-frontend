@@ -1,0 +1,78 @@
+import React from 'react'
+import image1 from "/image23.jpg";
+import image2 from "/image24.jpg";
+import image3 from "/image25.jpg";
+import image4 from "/image26.jpg";
+import image5 from "/image27.jpg";
+
+
+
+
+
+function ProductCollection() {
+    
+  return (
+    <div className="w-full mx-auto p-8 bg-primary">
+    {/* Header Section */}
+    <div className="text-center mb-12">
+      <h1 className="font-main font-medium text-[42px] md:text-[48px] text-center mb-2">Superior Skin Products</h1>
+      <p className="font-second  text-secondary text-[48px] md:text-[54px] relative text-center">Collection</p>
+    </div>
+
+    {/* Grid Layout */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Large Image */}
+      <div className="lg:col-span-1 row-span-2">
+        <div className="rounded-lg overflow-hidden h-[650px]">
+          <img 
+            src={image1}
+            alt="Orange collection skincare products" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Small Images */}
+      <div className="space-y-4 lg:col-span-2">
+        <div className="grid grid-cols-2 gap-4">
+          {/* Top Row Images */}
+          <div className="rounded-lg overflow-hidden">
+            <img 
+              src={image2} 
+              alt="Beauty products flatlay" 
+              className="w-full max-h-80 object-cover"
+            />
+          </div>
+          <div className="rounded-lg overflow-hidden">
+            <img 
+              src={image3} 
+              alt="Pink nail polish collection" 
+              className="w-full h-80 object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          {/* Bottom Row Images */}
+          <div className="rounded-lg overflow-hidden">
+            <img 
+              src={image5} 
+              alt="Chanel perfume bottle" 
+              className="w-full h-80 object-cover"
+            />
+          </div>
+          <div className="rounded-lg overflow-hidden">
+            <img 
+              src={image5} 
+              alt="Makeup products on purple background" 
+              className="w-full h-80 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  )
+}
+
+export default ProductCollection

@@ -10,6 +10,7 @@ import SkinImprove from "./SkinImprove";
 import GlowCollection from "./GlowCollection";
 import PassionPage from "./PassionPage";
 import Preloader from "../../components/Preloader";
+import ProductCollection from "./ProductCollection";
 
 function CustomerHome() {
   const [loading, setLoading] = useState(true)
@@ -33,6 +34,7 @@ function CustomerHome() {
                  <PassionPage/>
                  <GlowCollection/>
                  <SkinImprove/>
+                 <ProductCollection/>
                  
                </main>
              }
