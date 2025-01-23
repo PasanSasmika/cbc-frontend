@@ -1,3 +1,4 @@
+import { useGoogleLogin } from '@react-oauth/google'
 import axios from 'axios'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -6,6 +7,12 @@ function Login() {
 
   const [email, setEmail] = useState("Your email")
   const [password, setPassword] = useState("")
+
+  const googleLogin  = useGoogleLogin({
+    onSuccess: (res)=>{
+      console.log(res)
+    }
+  })
 
   function userLogin(){
 
@@ -65,6 +72,7 @@ function Login() {
         >
           Login
         </button>
+        <button onClick={()=>{googleLogin()}}>Google login</button>
 
     </div>
   </div>
