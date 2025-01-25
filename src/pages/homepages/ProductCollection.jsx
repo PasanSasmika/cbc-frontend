@@ -23,7 +23,7 @@ function ProductCollection() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {/* Large Image */}
       <div className="lg:col-span-1 row-span-2">
-        <div className="rounded-lg overflow-hidden h-[650px]">
+        <div className="rounded-lg overflow-hidden ml-12 w-[400px] h-[600px]">
           <img 
             src={image1}
             alt="Orange collection skincare products" 
@@ -33,21 +33,21 @@ function ProductCollection() {
       </div>
 
       {/* Small Images */}
-      <div className="space-y-4 lg:col-span-2">
+      <div className="space-y-4  lg:col-span-2">
         <div className="grid grid-cols-2 gap-4">
           {/* Top Row Images */}
           <div className="rounded-lg overflow-hidden">
             <img 
               src={image2} 
               alt="Beauty products flatlay" 
-              className="w-full max-h-80 object-cover"
+              className="w-full max-h-72 object-cover"
             />
           </div>
           <div className="rounded-lg overflow-hidden">
             <img 
               src={image3} 
               alt="Pink nail polish collection" 
-              className="w-full h-80 object-cover"
+              className="w-full h-72 object-cover"
             />
           </div>
         </div>
@@ -58,14 +58,14 @@ function ProductCollection() {
             <img 
               src={image5} 
               alt="Chanel perfume bottle" 
-              className="w-full h-80 object-cover"
+              className="w-full h-72 object-cover"
             />
           </div>
           <div className="rounded-lg overflow-hidden">
             <img 
               src={image5} 
               alt="Makeup products on purple background" 
-              className="w-full h-80 object-cover"
+              className="w-full h-72 object-cover"
             />
           </div>
         </div>
