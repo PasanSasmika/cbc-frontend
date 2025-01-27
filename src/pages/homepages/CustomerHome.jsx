@@ -13,6 +13,7 @@ import Preloader from "../../components/Preloader";
 import ProductCollection from "./ProductCollection";
 import Category from "./Category";
 import SpecialProduct from "./SpecialProduct";
+import Footer from "../../components/Footer";
 
 function CustomerHome() {
   const [loading, setLoading] = useState(true)
@@ -38,6 +39,7 @@ function CustomerHome() {
                  <SkinImprove/>
                  <ProductCollection/>
                  <SpecialProduct/>
+                 <Footer/>
                  
                </main>
              }
