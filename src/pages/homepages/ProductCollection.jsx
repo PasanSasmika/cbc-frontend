@@ -29,10 +29,10 @@ function ProductCollection() {
       </motion.div>
 
       {/* Grid Layout */}
-      <motion.div {...HomePageAnimation2()} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <motion.div {...HomePageAnimation2()} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-5">
         {/* Large Image */}
         <div className="lg:col-span-1 row-span-2 cursor-pointer">
-          <div className="relative group rounded-lg overflow-hidden ml-16 w-[400px] h-[600px]"  onClick={() => handleCategoryClick("skincare")}>
+          <div className="relative group rounded-lg overflow-hidden w-[400px] h-[600px]"  onClick={() => handleCategoryClick("skincare")}>
             <img
               src={image1}
               alt="Orange collection skincare products"
@@ -47,7 +47,7 @@ function ProductCollection() {
         </div>
 
         {/* Small Images */}
-        <div className="space-y-4  lg:col-span-2">
+        <div className="space-y-4  lg:col-span-2 -ml-16">
           <div className="grid grid-cols-2 gap-4 cursor-pointer">
             {/* Top Row Images */}
             <div className="relative group rounded-lg overflow-hidden" onClick={() => handleCategoryClick("nailcare")}>

@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard'
 import { motion } from 'framer-motion' 
 import { Link } from 'react-router-dom'
 import { SkinImprove4 } from '../../animations/animation'
+import toast from 'react-hot-toast'
 
 function GlowCollection() {
 
