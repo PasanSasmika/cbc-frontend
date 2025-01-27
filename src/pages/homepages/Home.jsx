@@ -32,9 +32,6 @@ function Home() {
       </div>
       
     </div>
-
-      {/* <SkinImprove/>
-      <GlowCollection/> */}
   
     </>
   )

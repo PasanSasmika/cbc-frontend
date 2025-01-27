@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { addToCart } from '../../utils/cartFunctions';
 import toast from 'react-hot-toast';
+import SecondaryLoader from '../../components/SecondaryLoader';
 
 function ProductOverview() {
 
@@ -38,10 +39,7 @@ function ProductOverview() {
     <div className='w-full h-full'>
       {
         status == "loading"&&(
-          <div className='w-full h-full flex items-center justify-center'>
-            <div className='w-32 h-32 border-2 rounded-full animate-spin border-gray-500
-            border-b-red-300 border-b-4'></div>
-          </div>
+          <SecondaryLoader/>
         )
       }
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import SecondaryLoader from '../../components/SecondaryLoader';
 
 function Category() {
     const { category } = useParams();
@@ -22,10 +23,7 @@ function Category() {
 
   return (
     <>
-{ loading?  <div className='w-full h-full flex items-center justify-center'>
-            <div className='w-32 h-32 border-2 rounded-full animate-spin border-gray-500
-            border-b-red-300 border-b-4'></div>
-          </div> :<div>
+{ loading? <SecondaryLoader/> :<div>
 <h1 className="text-2xl font-semibold text-gray-800 mb-6">{category} Products</h1>
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 {products.map((product) => (
