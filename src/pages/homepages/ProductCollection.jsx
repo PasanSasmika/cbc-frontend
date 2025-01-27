@@ -4,12 +4,16 @@ import image2 from "/image24.jpg";
 import image3 from "/image25.jpg";
 import image4 from "/image26.jpg";
 import image5 from "/image27.jpg";
-
-
-
-
+import { useNavigate } from 'react-router-dom';
 
 function ProductCollection() {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category) => {
+    // Navigate to the category page
+    navigate(`/products/${category}`);
+};
+
     
   return (
     <div className="w-full mx-auto p-8 bg-primary">
@@ -27,7 +31,7 @@ function ProductCollection() {
           <img 
             src={image1}
             alt="Orange collection skincare products" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover" onClick={() => handleCategoryClick('skincare')}
           />
         </div>
       </div>
@@ -40,14 +44,14 @@ function ProductCollection() {
             <img 
               src={image2} 
               alt="Beauty products flatlay" 
-              className="w-full max-h-72 object-cover"
+              className="w-full max-h-72 object-cover" onClick={() => handleCategoryClick('nailcare')}
             />
           </div>
           <div className="rounded-lg overflow-hidden">
             <img 
               src={image3} 
               alt="Pink nail polish collection" 
-              className="w-full h-72 object-cover"
+              className="w-full h-72 object-cover" onClick={() => handleCategoryClick('fragrance')}
             />
           </div>
         </div>
@@ -58,14 +62,14 @@ function ProductCollection() {
             <img 
               src={image5} 
               alt="Chanel perfume bottle" 
-              className="w-full h-72 object-cover"
+              className="w-full h-72 object-cover" onClick={() => handleCategoryClick('bath&body')}
             />
           </div>
           <div className="rounded-lg overflow-hidden">
             <img 
-              src={image5} 
+              src={image4} 
               alt="Makeup products on purple background" 
-              className="w-full h-72 object-cover"
+              className="w-full h-72 object-cover" onClick={() => handleCategoryClick('makeup')}
             />
           </div>
         </div>

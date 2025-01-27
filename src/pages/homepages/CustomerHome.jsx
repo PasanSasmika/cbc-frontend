@@ -11,6 +11,7 @@ import GlowCollection from "./GlowCollection";
 import PassionPage from "./PassionPage";
 import Preloader from "../../components/Preloader";
 import ProductCollection from "./ProductCollection";
+import Category from "./Category";
 
 function CustomerHome() {
   const [loading, setLoading] = useState(true)
@@ -41,6 +42,7 @@ function CustomerHome() {
            />
            <Route path="/products" element={<Products />} />
            <Route path="/productInfo/:id" element={<ProductOverview />} />
+           <Route path="/products/:category" element={<Category/>} />
            <Route path="/cart" element={<Cart />} />
            <Route path="/contact" element={<h1>Contact</h1>} />
            <Route path="/*" element={<h1>Error</h1>} />
