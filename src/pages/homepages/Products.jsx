@@ -5,7 +5,7 @@ import ProductCard from '../../components/ProductCard'
 import Header from '../../components/Header'
 import image from '/image2.jpg'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
-import { IoClose } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
 
 
 function Products() {
@@ -27,6 +27,12 @@ function Products() {
     }
     },[])
 
+    const navigate =  useNavigate();
+
+    const handleCategoryClick = (category) => {
+      navigate(`/products/${category}`);
+    };
+  
 
   return (
     <div className="w-full h-full flex-col bg-primary">
@@ -41,7 +47,7 @@ function Products() {
         </div>
     </div>
 
-    {/* Category Heading */}
+    
     <div className="w-full flex justify-center items-center mt-14 relative">
   <div className="flex items-center gap-4">
     <h1 className="text-secondary text-[30px] font-main font-semibold">Category</h1>
@@ -53,27 +59,21 @@ function Products() {
     </span>
   </div>
 
-  {/* Category Dropdown */}
+ 
   {catBar && (
-    <div className="absolute top-0 left-0 w-full flex justify-center mt-2">
+    <div className="absolute top-0 left-0 w-full flex justify-center mt-2" onClick={() => setCatBar(false)}>
       <div className="bg-accent shadow-md rounded-lg flex items-center cursor-pointer justify-center gap-6 p-6 w-[700px] mt-12 transform transition-all duration-500 ease-in-out">
-        <h1 className="text-secondary text-[16px] font-accent">Skincare</h1>
-        <h1 className="text-secondary text-[16px] font-accent">Nailcare</h1>
-        <h1 className="text-secondary text-[16px] font-accent">Fragrance</h1>
-        <h1 className="text-secondary text-[16px] font-accent">Bath & Body</h1>
-        <h1 className="text-secondary text-[16px] font-accent">Makeup</h1>
-        <span 
-          className="text-secondary text-[22px] font-accent cursor-pointer absolute top-0 right-0 p-2"
-          onClick={() => setCatBar(false)}
-        >
-          <IoClose />
-        </span>
+        <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("skincare")}>Skincare</h1>
+        <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("nailcare")}>Nailcare</h1>
+        <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("fragrance")}>Fragrance</h1>
+        <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("bath&body")}>Bath & Body</h1>
+        <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("makeup")}>Makeup</h1>
       </div>
     </div>
   )}
 </div>
 
-    {/* Product Cards Section */}
+    
     <div className="flex-1 overflow-y-auto w-full bg-gradient-to-b from-primary flex-wrap flex items-center justify-center gap-16 gap-y-32 p-16 mt-14">
         {products.map((product) => (
             <ProductCard key={product.id} product={product} />

@@ -12,7 +12,6 @@ function ProductCollection() {
   const navigate = useNavigate();
 
   const handleCategoryClick = (category) => {
-    // Navigate to the category page
     navigate(`/products/${category}`);
   };
 
