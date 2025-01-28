@@ -105,3 +105,30 @@ export const Headeranimation = () => ({
   
 });
 
+export const CategoryBar = () => ({
+  initial: {
+    y: -18,
+  },
+
+  animate: {
+    y: 0,
+  },
+  transition: {
+    duration: 0.002,
+    ease: "linear",
+  },
+});
+
+export const Category = () => ({
+  initial: {
+    scale: 1.6,
+  },
+
+  animate: {
+    scale: 1,
+  },
+  transition: {
+    duration: 0.4,
+  },
+  
+});

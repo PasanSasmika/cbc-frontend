@@ -4,8 +4,10 @@ import toast from 'react-hot-toast'
 import ProductCard from '../../components/ProductCard'
 import Header from '../../components/Header'
 import image from '/image2.jpg'
+import { motion } from 'framer-motion' 
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import { Category, CategoryBar, HomePageAnimation } from '../../animations/animation'
 
 
 function Products() {
@@ -24,6 +26,7 @@ function Products() {
         ).catch(
             (err)=>toast.error('Error loading products')
         )
+        window.scrollTo(0, 0);
     }
     },[])
 
@@ -41,8 +44,8 @@ function Products() {
         <div className="w-[1404px] h-full relative">
             <img src={image} alt="" className="w-full h-full object-cover rounded-xl" />
             <div className="absolute top-0 left-0 w-full h-full bg-black/35 rounded-xl z-10 flex flex-col items-center justify-center">
-                <h1 className="text-white font-main font-bold text-[80px] z-40">Shop Our</h1>
-                <h1 className="text-white font-second text-[65px] z-40">products</h1>
+                <motion.h1 {...Category()}  className="text-white font-main font-bold text-[80px] z-40">Shop </motion.h1>
+                <motion.h1 {...Category()} className="text-white font-second text-[65px] z-40">Our products</motion.h1>
             </div>
         </div>
     </div>
@@ -62,13 +65,13 @@ function Products() {
  
   {catBar && (
     <div className="absolute top-0 left-0 w-full flex justify-center mt-2" onClick={() => setCatBar(false)}>
-      <div className="bg-accent shadow-md rounded-lg flex items-center cursor-pointer justify-center gap-6 p-6 w-[700px] mt-12 transform transition-all duration-500 ease-in-out">
+      <motion.div {...CategoryBar()} className="bg-accent shadow-md rounded-lg flex items-center cursor-pointer justify-center gap-6 p-6 w-[700px] mt-12 transform transition-all duration-500 ease-in-out">
         <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("skincare")}>Skincare</h1>
         <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("nailcare")}>Nailcare</h1>
         <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("fragrance")}>Fragrance</h1>
         <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("bath&body")}>Bath & Body</h1>
         <h1 className="text-secondary text-[16px] font-accent" onClick={() => handleCategoryClick("makeup")}>Makeup</h1>
-      </div>
+      </motion.div>
     </div>
   )}
 </div>
