@@ -23,7 +23,7 @@ function Header() {
       Shop
 
     </Link>
-    <Link to="/contact" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
+    <Link to="/aboutus" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
      after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">
       
       Our story
@@ -56,7 +56,7 @@ function Header() {
       Shop
 
     </Link>
-    <Link to="/contact" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
+    <Link to="/aboutus" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
      after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">
       
       Our story

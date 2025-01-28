@@ -14,6 +14,7 @@ import ProductCollection from "./ProductCollection";
 import Category from "./Category";
 import SpecialProduct from "./SpecialProduct";
 import Footer from "../../components/Footer";
+import AboutUs from "./AboutUs";
 
 function CustomerHome() {
   const [loading, setLoading] = useState(true)
@@ -48,7 +49,7 @@ function CustomerHome() {
            <Route path="/productInfo/:id" element={<ProductOverview />} />
            <Route path="/products/:category" element={<Category/>} />
            <Route path="/cart" element={<Cart />} />
-           <Route path="/contact" element={<h1>Contact</h1>} />
+           <Route path="/aboutus" element={<AboutUs/>} />
            <Route path="/*" element={<h1>Error</h1>} />
          </Routes>
        </div>
