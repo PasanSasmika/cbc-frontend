@@ -132,3 +132,21 @@ export const Category = () => ({
   },
   
 });
+
+export const About = () => ({
+  initial: { x: 300},
+
+  whileInView: { x: 1 } ,
+    
+  transition: { duration: 1.3 },
+  
+});
+
+export const About2 = () => ({
+  initial: { x: -300},
+
+  whileInView: { x: 1 } ,
+    
+  transition: { duration: 1.3 },
+  
+});

@@ -10,7 +10,7 @@ import image7 from "/about6.jpg";
 import image8 from "/about7.jpg";
 import image9 from "/about8.jpg";
 import Header from "../../components/Header";
-import { Category } from "../../animations/animation";
+import { About, About2, Category } from "../../animations/animation";
 import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
 
@@ -65,24 +65,24 @@ function AboutUs() {
           </p>
           <div className="w-24 h-[3px] bg-gray-500 mt-6 rounded-full"></div>
         </div>
-        <div className="flex w-[50%] h-full items-center">
+        <motion.div {...About()} className="flex w-[50%] h-full items-center">
           <img
             src={image3}
             alt=""
             className="w-[40%] h-[420px] object-cover mr-3"
           />
           <img src={image2} alt="" className="w-[58%] h-[420px] object-cover" />
-        </div>
+        </motion.div>
       </div>
 
       <div className="w-full h-[550px]  flex items-center mt-32">
-        <div className="flex w-[50%] h-full items-center">
+        <motion.div {...About2()} className="flex w-[50%] h-full items-center">
           <img
             src={image4}
             alt=""
             className="w-[90%] h-[420px] object-cover ml-3"
           />
-        </div>
+        </motion.div>
         <div className="flex flex-col items-center  w-[50%] h-full p-10">
           <h1 className="text-[45px] font-main font-bold text-gray-900">
             Our commitment
