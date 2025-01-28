@@ -55,6 +55,9 @@ function Footer() {
         </p>
       </div>
     </div>
+    <div className='flex justify-center items-center relative'>
+      <h3 className='absolute top-14 font-main text-[12px]'>© Copyright Crystal Beauty Clear 2025.</h3>
+    </div>
     </div>
   </footer>
   )
