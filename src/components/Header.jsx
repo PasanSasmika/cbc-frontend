@@ -8,6 +8,7 @@ import { IoMdClose } from 'react-icons/io'
 
 function Header() {
   const [isSliderOpen , setIsSliderOpen] = useState(false)
+  const [isMorePages, setIsMorePages] = useState(false)
   return (
     <>
     {isSliderOpen&& 
@@ -45,7 +46,7 @@ function Header() {
       </div>
       <RxHamburgerMenu className='text-3xl lg:hidden absolute right-10' onClick={()=>setIsSliderOpen(true)}/>
 
-      <div className='gap-16 items-center pt-7 pl-56 hidden lg:flex'>
+      <div className='gap-16 items-center pt-7 pl-56 hidden lg:flex' onMouseLeave={()=>setIsMorePages(false)}>
         
     <Link to="/" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
      after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">
@@ -62,12 +63,19 @@ function Header() {
       Our story
 
     </Link>
-    <Link to="/contact" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
-     after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">
+    <Link to="" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
+     after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full" onMouseEnter={()=>setIsMorePages(true)}>
       
       Pages
-
+      {isMorePages&&<div className='absolute w-[160px] flex flex-col gap-2 rounded-xl ml-20 justify-center p-3 mt-10 h-44 bg-accent z-30' onMouseLeave={()=>setIsMorePages(false)}>
+        <h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>blogs</h1>
+        <h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>faq</h1>
+        <h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>reviews</h1>
+        <h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>contact</h1>
+       <Link to="/products"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>products</h1></Link> 
+      </div>}
     </Link>
+   
 
     <div className='flex absolute right-0 mr-20'>
     <div className='flex w-12 h-12 border-2 border-accent rounded-full items-center justify-center'>
