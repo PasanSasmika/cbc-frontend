@@ -70,8 +70,7 @@ function Header() {
       {isMorePages&&<div className='absolute w-[160px] flex flex-col gap-2 rounded-xl ml-20 justify-center p-3 mt-10 h-44 bg-accent z-30' onMouseLeave={()=>setIsMorePages(false)}>
        <Link to="/blogs"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>blogs</h1></Link> 
        <Link to="/faq"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>faq</h1></Link> 
-        <h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>reviews</h1>
-        <h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>contact</h1>
+        <Link to="/contact"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>contact</h1></Link>
        <Link to="/products"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>products</h1></Link> 
       </div>}
     </Link>

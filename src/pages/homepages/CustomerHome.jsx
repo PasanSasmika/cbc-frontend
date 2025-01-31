@@ -17,6 +17,7 @@ import Footer from "../../components/Footer";
 import AboutUs from "./AboutUs";
 import Blogs from "./Blogs";
 import Faq from "./Faq";
+import Contact from "./Contact";
 
 function CustomerHome() {
   const [loading, setLoading] = useState(true)
@@ -54,6 +55,7 @@ function CustomerHome() {
            <Route path="/aboutus" element={<AboutUs/>} />
            <Route path="/blogs" element={<Blogs/>} />
            <Route path="/faq" element={<Faq/>} />
+           <Route path="/contact" element={<Contact/>} />
            <Route path="/*" element={<h1>Error</h1>} />
          </Routes>
        </div>
