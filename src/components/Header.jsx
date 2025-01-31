@@ -4,6 +4,7 @@ import logo from '/logo.png'
 import { FaUser, FaShoppingCart } from 'react-icons/fa'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdClose } from 'react-icons/io'
+import { motion } from "framer-motion";
 
 
 function Header() {
@@ -46,28 +47,28 @@ function Header() {
       </div>
       <RxHamburgerMenu className='text-3xl lg:hidden absolute right-10' onClick={()=>setIsSliderOpen(true)}/>
 
-      <div className='gap-16 items-center pt-7 pl-56 hidden lg:flex' onMouseLeave={()=>setIsMorePages(false)}>
+      <div className='gap-16 items-center justify-center pt-7  hidden lg:flex' onMouseLeave={()=>setIsMorePages(false)}>
         
-    <Link to="/" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
+    <Link to="/" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[18px]  hover:after:block after:w-0 after:h-[2px]
      after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">
       Home
     </Link>
-    <Link to="/products" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
+    <Link to="/products" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[18px]  hover:after:block after:w-0 after:h-[2px]
      after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">
       Shop
 
     </Link>
-    <Link to="/aboutus" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
+    <Link to="/aboutus" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[18px]  hover:after:block after:w-0 after:h-[2px]
      after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full">
       
       Our story
 
     </Link>
-    <Link to="" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[20px]  hover:after:block after:w-0 after:h-[2px]
+    <Link to="" className="flex flex-col  items-center  uppercase font-accent text-secondary text-[18px]  hover:after:block after:w-0 after:h-[2px]
      after:bg-secondary after:mt-1 after:transition-all after:duration-300 after:content-[''] hover:after:w-full" onMouseEnter={()=>setIsMorePages(true)}>
       
       Pages
-      {isMorePages&&<div className='absolute w-[160px] flex flex-col gap-2 rounded-xl ml-20 justify-center p-3 mt-10 h-44 bg-accent z-30' onMouseLeave={()=>setIsMorePages(false)}>
+      {isMorePages&&<div className='absolute w-[160px] flex flex-col gap-3 rounded-xl ml-20 justify-center p-3 mt-9 h-40 bg-accent z-30' onMouseLeave={()=>setIsMorePages(false)}>
        <Link to="/blogs"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>blogs</h1></Link> 
        <Link to="/faq"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>faq</h1></Link> 
         <Link to="/contact"><h1 className='uppercase font-accent text-secondary hover:text-gray-600 text-[14px]'>contact</h1></Link>
