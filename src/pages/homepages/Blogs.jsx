@@ -15,12 +15,40 @@ import Footer from "../../components/Footer";
 import { useNavigate } from 'react-router-dom';
 
 function Blogs() {
+
+    const blogPost = [
+      { id: 1, catg: "skincare", topic: "The importance of sun protection in your skincare routine,", imag:image, 
+        deta:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage",
+        desc:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage" },
+      { id: 2, catg: "skincare", topic: "The importance of sun protection in your skincare routine", 
+        deta:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage",imag:image2,
+        desc:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage" },
+      { id: 3, catg: "skincare", topic: "The importance of sun protection in your skincare routine", 
+        deta:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage",imag:image3,
+        desc:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage" },
+      { id: 4, catg: "skincare", topic: "The importance of sun protection in your skincare routine", 
+        deta:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage",imag:image4,
+        desc:"Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage" },
+    ]
     const navigate = useNavigate();
 
     const handleCategoryClick = (category) => {
       // Navigate to the category page
       navigate(`/products/${category}`);
     };
+
+    const blogNavigate = useNavigate();
+    const click = (post)=>{
+      blogNavigate(`/blogdata/`,{
+        state:{
+          catg: post.catg,
+          image: post.imag,
+          topic: post.topic,
+          data: post.deta,
+          desc: post.desc,
+        }
+      })
+    }
   return (
     <div className=" min-h-[120vh] w-full bg-primary">
     <Header />
@@ -70,39 +98,40 @@ function Blogs() {
 
     <div className="w-full flex items-center justify-center mt-28">
   <div className="grid grid-cols-2 gap-12 w-[80%]">
-    {/* Blog Cards */}
-    {[image, image2, image3, image4].map((img, index) => (
+     {blogPost.map((post)=>(
+
       <div 
-        key={index} 
+        key={post.id} 
         className="bg-accent  overflow-hidden transition-transform duration-500 hover:scale-105"
       >
         <div className="relative">
           <img 
-            src={img} 
+            src={post.imag} 
             alt="Skincare product" 
             className="w-full h-[260px] object-cover"
           />
-          {/* Overlay Effect */}
+        
           <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
-            <button className="text-white font-second text-[20px] px-4 py-2 rounded-lg shadow-md hover:bg-opacity-80">
+            <button className="text-white font-second text-[20px] px-4 py-2 rounded-lg shadow-md hover:bg-opacity-80" onClick={() => click(post)}>
               Read More
             </button>
           </div>
         </div>
         <div className="p-5">
           <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">
-            Skincare
+            {post.catg}
           </p>
           <h3 className="text-lg font-bold text-gray-900 mt-2 leading-snug">
-            The importance of sun protection in your skincare routine
+            {post.topic}
           </h3>
           <p className="text-gray-600 text-sm mt-2">
-            Discover why sunscreen is essential and how it protects your skin from premature aging and UV damage.
+            {post.desc}
           </p>
           <div className="mt-4 w-16 h-[3px] bg-gray-400 rounded-full"></div>
         </div>
       </div>
-    ))}
+  
+  ))}
   </div>
 </div>
 
