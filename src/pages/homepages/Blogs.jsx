@@ -103,7 +103,7 @@ function Blogs() {
       <div 
         key={post.id} 
         className="bg-accent  overflow-hidden transition-transform duration-500 hover:scale-105"
-      >
+        onClick={() => click(post)}>
         <div className="relative">
           <img 
             src={post.imag} 
@@ -112,7 +112,7 @@ function Blogs() {
           />
         
           <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
-            <button className="text-white font-second text-[20px] px-4 py-2 rounded-lg shadow-md hover:bg-opacity-80" onClick={() => click(post)}>
+            <button className="text-white font-second text-[20px] px-4 py-2 rounded-lg shadow-md hover:bg-opacity-80">
               Read More
             </button>
           </div>
