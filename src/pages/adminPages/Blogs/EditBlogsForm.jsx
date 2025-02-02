@@ -76,6 +76,7 @@ function EditBlogsForm() {
               </label>
               <input
                 type="text"
+                disabled
                 value={blogId}
                 onChange={(e) => setBlogId(e.target.value)}
                 className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"

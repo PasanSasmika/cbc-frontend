@@ -1,19 +1,23 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../../components/Header";
+import { div } from "framer-motion/client";
 
 function BlogInfo() {
   const location = useLocation();
-  const { catg, image, topic, desc } = location.state || {};
+  const { catg, image, topic, desc,date } = location.state || {};
 
   return (
-    <>
+    <div className="w-full min-h-screen">
       <Header />
-      <div className="flex flex-col items-center w-full min-h-screen bg-primary p-6">
+      <div className="flex flex-col items-center  bg-primary p-6">
         <div className="max-w-4xl w-full  shadow-lg rounded-lg p-8">
-          <span className="text-secondary text-lg font-accent font-medium uppercase tracking-wide">
-            {catg}
+        <span className="text-secondary text-[16px] font-accent font-normal uppercase tracking-wide">
+            {date}
           </span>
+          <h2 className="text-secondary text-[18px] font-accent font-medium uppercase tracking-wide">
+            {catg}
+          </h2>
           <h1 className="text-4xl font-bold font-main text-gray-900 mt-4 text-center md:text-left">
             {topic}
           </h1>
@@ -25,7 +29,7 @@ function BlogInfo() {
           <p className="text-lg text-gray-700 mt-6 leading-relaxed">{desc}</p>
         </div>
       </div>
-    </>
+      </div>
   );
 }
 
