@@ -4,13 +4,13 @@ import { BsBoxFill, BsCartCheckFill } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { motion } from "framer-motion";
-import AdminProducts from './AdminProducts';
-import AddproductForm from './AddproductForm';
 import { Animation, Animation2 } from '../../animations/animation';
-import EditProductForm from './EditProductForm';
 import { FaNoteSticky } from 'react-icons/fa6';
 import AddBlogs from './Blogs/AddBlogs';
 import AdminBlogs from './Blogs/AdminBlogs';
+import AdminProducts from './Products/AdminProducts';
+import AddProductForm from './Products/AddproductForm';
+import EditProductForm from './Products/EditProductForm';
 
 function AdminHome() {
 
@@ -150,7 +150,7 @@ function AdminHome() {
     <Route path='/products' element={<AdminProducts/>}/>
     <Route path='/blogs' element={<AdminBlogs/>}/>
     <Route path='/blogs/addblogs' element={<AddBlogs/>}/>
-    <Route path='/products/addproducts' element={<AddproductForm/>}/>
+    <Route path='/products/addproducts' element={<AddProductForm/>}/>
     <Route path='/products/editproduct' element={<EditProductForm/>}/>
     <Route path='/*' element={<h1>Error</h1>}/>
   </Routes>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { div } from 'framer-motion/client';
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 import { FaPlus, FaTrash } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6';
 import { Link } from 'react-router-dom'
@@ -80,13 +81,24 @@ function AdminBlogs() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                     <div className="flex gap-4">
-                      <button
-                        className="text-red-600 hover:text-red-800"
-                        title="Delete"
-                       
-                      >
-                        <FaTrash />
-                      </button>
+                    <button className="text-red-600 hover:text-red-800" title="Delete"
+                  
+                  onClick={()=>{
+                    const token = localStorage.getItem("token");
+
+                    axios.delete(import.meta.env.VITE_BACKEND_URL +`/api/blogs/${blog.blogId}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    }).then((res)=>{
+                      console.log(res.data);
+                      toast.success("Blog deleted successfully");
+                      setBlogLoades(false);
+                    });
+
+                  }}>
+                    <FaTrash />
+                  </button>
   
                       <button
                         className="text-blue-600 hover:text-blue-800"

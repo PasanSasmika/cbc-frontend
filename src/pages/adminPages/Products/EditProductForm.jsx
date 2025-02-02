@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
-import uploadMediaToSupabase from '../../utils/mediaUpload';
+import uploadMediaToSupabase from '../../../utils/mediaUpload';
 
 function EditProductForm() {
 
