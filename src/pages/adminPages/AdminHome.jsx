@@ -8,6 +8,9 @@ import AdminProducts from './AdminProducts';
 import AddproductForm from './AddproductForm';
 import { Animation, Animation2 } from '../../animations/animation';
 import EditProductForm from './EditProductForm';
+import { FaNoteSticky } from 'react-icons/fa6';
+import AddBlogs from './Blogs/AddBlogs';
+import AdminBlogs from './Blogs/AdminBlogs';
 
 function AdminHome() {
 
@@ -111,6 +114,28 @@ function AdminHome() {
                 </motion.h1></Link>
               )}
             </div>
+
+             {/* Blogs */}
+
+             <div className="relative">
+              <motion.div
+                {...Animation()}
+                className="w-[70px] h-[70px] rounded-full bg-[#FBFCFC] flex justify-center items-center text-[35px]"
+                onClick={() => setNotIsOpen("blogs")}
+              >
+                <FaNoteSticky />
+              </motion.div>
+              {notIsopen === "blogs" && (
+                 <Link to={"/admin/blogs"}><motion.h1
+                  layout
+                  {...Animation2()}
+                  className="absolute top-2 z-10 left-[90px] transform -translate-y-1/2 bg-gradient-to-r from-[#f2cdb4] to-[#daaa8a]
+                   shadow-lg w-44 h-12 text-white text-[20px] font-semibold px-4 py-2 rounded-lg flex items-center justify-center"
+                >
+                  Blogs
+                </motion.h1></Link>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -123,6 +148,8 @@ function AdminHome() {
     <Route path='/orders' element={<h1>orders</h1>}/>
     <Route path='/customers' element={<h1>customers</h1>}/>
     <Route path='/products' element={<AdminProducts/>}/>
+    <Route path='/blogs' element={<AdminBlogs/>}/>
+    <Route path='/blogs/addblogs' element={<AddBlogs/>}/>
     <Route path='/products/addproducts' element={<AddproductForm/>}/>
     <Route path='/products/editproduct' element={<EditProductForm/>}/>
     <Route path='/*' element={<h1>Error</h1>}/>
