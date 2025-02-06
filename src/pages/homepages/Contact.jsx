@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/Header'
 import image2 from "/contact.jpg";
 import { motion } from "framer-motion";
@@ -7,8 +7,43 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { BiSolidPhoneCall } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 import Footer from '../../components/Footer';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(event){
+  event.preventDefault();    
+    
+    const contact = {
+      name,
+      email,
+      subject,
+      message
+    };
+
+    
+  const token = localStorage.getItem('token');
+
+  try {
+    await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/api/contact`, 
+      contact, 
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    );
+    toast.success('Your Message sent');
+  } catch (error) {
+    toast.error('Failed to send message !');
+  }
+}
+
+
   return (
     <div className="min-h-[120vh] w-full bg-primary">
   <Header />
@@ -68,11 +103,29 @@ function Contact() {
         <h1 className="text-[30px]  font-main font-semibold text-gray-900">Fill the Form</h1>
 
         <form className="flex flex-col space-y-6 mt-7">
-          <input type="text" placeholder="enter your name" className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary" />
-          <input type="email" placeholder="enter your email" className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary" />
-          <input type="text" placeholder="subject" className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary" />
-          <textarea placeholder="message" className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary h-32"></textarea>
-          <button className=" text-white bg-secondary py-3 hover:bg-opacity-90">
+          <input type="text" 
+          placeholder="enter your name" 
+          value={name}
+          onChange={(e)=> setName(e.target.value)}
+          className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary" />
+
+          <input type="email" 
+          placeholder="enter your email" 
+          value={email}
+          onChange={(e)=> setEmail(e.target.value)}
+          className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary" />
+
+          <input type="text" 
+          placeholder="subject" 
+          value={subject}
+          onChange={(e)=> setSubject(e.target.value)}
+          className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary" />
+
+          <textarea placeholder="message" 
+          value={message}
+          onChange={(e)=> setMessage(e.target.value)}
+          className="p-3 border placeholder:font-main placeholder:text-secondary border-secondary bg-primary h-32"></textarea>
+          <button className=" text-white bg-secondary py-3 hover:bg-opacity-90" onClick={submit}>
             Send Message
           </button>
         </form> 
