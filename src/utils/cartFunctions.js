@@ -45,12 +45,14 @@ export function saveCart(cart){
 export function deleteItem(productId){
     const cart = loadCart()
 
-    const index = cart.findIndex(
-        (item)=>{
-            return item.productId==productId
-        }
-    )
-    if(index!=-1){
-        cart.splice(index,1)
+  const index = cart.findIndex(
+    (item)=>{
+      return item.productId==productId
     }
+  )
+
+  if(index!=-1){    
+    cart.splice(index,1)
+    saveCart(cart)
+  }
 }

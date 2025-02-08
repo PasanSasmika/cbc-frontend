@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { addToCart } from '../../utils/cartFunctions';
 import toast from 'react-hot-toast';
 import SecondaryLoader from '../../components/SecondaryLoader';
@@ -12,7 +12,9 @@ function ProductOverview() {
   const productId = params.id;
   const [product, setProduct] = useState(null);
   const [status, setStatus] = useState("loading");
-  
+  const [quantity, setQuantity] = useState(1);
+
+  const navigate = useNavigate();
 
   useEffect(()=>{
     console.log(productId)
@@ -35,8 +37,19 @@ function ProductOverview() {
   },[])
 
   function onAddtoCartClick(){
-    addToCart(product.productId,1)
+    addToCart(product.productId, quantity)
     toast.success(product.productName+ " Added to cart")
+  }
+
+  function onBuyNowClick(){
+      navigate("/shipping", {state : {
+        items:[
+        {  productId: product.productId,
+          qty: quantity
+        }
+        ]
+        
+      }})
   }
 
   return (
@@ -83,11 +96,22 @@ function ProductOverview() {
 
         <p className="text-gray-600 text-md font-accent">{product.description}</p>
 
+        <div className="flex items-center space-x-4">
+          <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)} className="px-4 py-2 border border-[#bfb9b4] hover:border-secondary  text-gray-800 font-bold rounded-md active:scale-105">-</button>
+          <span className="text-xl font-semibold">{quantity}</span>
+          <button onClick={() => setQuantity(quantity + 1)} className="px-4 py-2 border border-[#bfb9b4]  hover:border-secondary text-gray-800 font-bold rounded-md active:scale-105">+</button>
+        </div>
         <button
           onClick={onAddtoCartClick}
-          className="mt-4 px-6 py-3 bg-[#653c20] text-white text-lg font-semibold rounded-lg shadow-md hover:bg-secondary transition duration-300"
+          className="mt-4 px-6 py-3 bg-[#653c20] text-white text-lg font-semibold rounded-lg shadow-md hover:bg-[#824b26] hover:scale-105 transition duration-300"
         >
           Add to Cart
+        </button>
+        <button
+          onClick={onBuyNowClick}
+          className="mt-4 px-6 py-3 bg-[#d5883a] text-white text-lg font-semibold rounded-lg shadow-md hover:bg-[#fc9f3f] hover:scale-105 transition duration-300"
+        >
+         Buy Now
         </button>
       </div>
     </div>

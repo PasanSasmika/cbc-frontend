@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { deleteItem } from '../utils/cartFunctions'
+import { div } from 'framer-motion/client'
 
 function CartCard(props) {
 
@@ -17,7 +18,6 @@ useEffect(()=>{
                 if(response.data!=null){
 
                 setProduct(response.data)
-                console.log(response.data)
                 setLoaded(true)
                 }else{
                     deleteItem(productId)
@@ -34,16 +34,25 @@ useEffect(()=>{
 },[])
 
   return (
-    <div className='border w-1/2 flex justify-center items-center'>
-        <span><img src={product?.Images[0]} alt="" className='w-6 h-6' /></span>
-        <span>{productId}</span>
-        <span className='p-7'>{product?.productName}</span>
+   <>
+   {
+    !loaded ? (
+            <div>Loading,,...</div>
+    ):(
+        <div className='border w-1/2 flex justify-center items-center'>
+        <span>image<img src={product?.Images[0]} alt="" className='w-6 h-6' /></span>
+        <span>id {productId}</span>
+        <span className='p-7'>name {product?.productName}</span>
         <span>{qty}</span>
         <span>LKR. {product?.lastPrice.toFixed(2)}</span>
         <span  className='p-7'>LKR. {(product?.lastPrice*qty).toFixed(2)}</span>
 
 
     </div>
+    )
+   }
+   
+    </>
   )
 }
 
