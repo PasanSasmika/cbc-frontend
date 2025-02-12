@@ -17,7 +17,6 @@ function ProductOverview() {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    console.log(productId)
     axios.get(import.meta.env.VITE_BACKEND_URL+"/api/products/"+productId).then((res)=>{
       console.log(res.data)
 
