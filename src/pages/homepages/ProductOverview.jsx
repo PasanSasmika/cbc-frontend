@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addToCart } from '../../utils/cartFunctions';
 import toast from 'react-hot-toast';
-import SecondaryLoader from '../../components/SecondaryLoader';
 import Header from '../../components/Header';
+import Preloader from '../../components/Preloader';
 
 function ProductOverview() {
 
@@ -55,7 +55,7 @@ function ProductOverview() {
     <>
     <Header/>
     <div className="h-[120vh] w-full bg-primary flex items-center justify-center p-8">
-  {status === "loading" && <SecondaryLoader />}
+  {status === "loading" && <Preloader />}
 
   {status === "not-found" && (
     <div className="flex flex-col items-center justify-center">

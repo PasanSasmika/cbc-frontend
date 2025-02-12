@@ -12,6 +12,7 @@ import AdminProducts from './Products/AdminProducts';
 import AddProductForm from './Products/AddproductForm';
 import EditProductForm from './Products/EditProductForm';
 import EditBlogsForm from './Blogs/EditBlogsForm';
+import Error from '../homepages/Error';
 
 function AdminHome() {
 
@@ -154,7 +155,7 @@ function AdminHome() {
     <Route path='/blogs/editblogs' element={<EditBlogsForm/>}/>
     <Route path='/products/addproducts' element={<AddProductForm/>}/>
     <Route path='/products/editproduct' element={<EditProductForm/>}/>
-    <Route path='/*' element={<h1>Error</h1>}/>
+    <Route path='/*' element={<Error/>}/>
   </Routes>
 </div>    
       </div>

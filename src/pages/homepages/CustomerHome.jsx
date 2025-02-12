@@ -20,6 +20,7 @@ import Faq from "./Faq";
 import Contact from "./Contact";
 import BlogInfo from "./BlogInfo";
 import Shipping from "./Shipping";
+import Error from "./Error";
 
 
 function CustomerHome() {
@@ -61,7 +62,7 @@ function CustomerHome() {
            <Route path="/faq" element={<Faq/>} />
            <Route path="/shipping" element={<Shipping/>} />
            <Route path="/contact" element={<Contact/>} />
-           <Route path="/*" element={<h1>Error</h1>} />
+           <Route path="/*" element={<Error/>} />
          </Routes>
        </div>
      </div>

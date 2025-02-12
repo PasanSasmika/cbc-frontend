@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import SecondaryLoader from '../../components/SecondaryLoader';
 import Header from '../../components/Header';
 import image2 from "/faqH.jpg";
 import { motion } from "framer-motion";
+import Preloader from '../../components/Preloader';
 
 function Category() {
     const { category } = useParams();
@@ -27,7 +27,7 @@ function Category() {
   return (
     <>
     <Header/>
-{ loading? <SecondaryLoader/> :
+{ loading? <Preloader/> :
 
 <div className='w-full h-[100vh] bg-primary'>
 <div className="w-full h-[370px] bg-primary flex items-center justify-center mt-8 relative">
