@@ -13,6 +13,7 @@ import AddProductForm from './Products/AddproductForm';
 import EditProductForm from './Products/EditProductForm';
 import EditBlogsForm from './Blogs/EditBlogsForm';
 import Error from '../homepages/Error';
+import Orders from './Orders/Orders';
 
 function AdminHome() {
 
@@ -147,7 +148,7 @@ function AdminHome() {
       <div className="w-[80%] h-[97vh] rounded-[16px] ml-2 bg-[#FBFCFC]">
   <Routes path="/*">
     <Route path='/' element={<h1>dashboard</h1>}/>
-    <Route path='/orders' element={<h1>orders</h1>}/>
+    <Route path='/orders' element={<Orders/>}/>
     <Route path='/customers' element={<h1>customers</h1>}/>
     <Route path='/products' element={<AdminProducts/>}/>
     <Route path='/blogs' element={<AdminBlogs/>}/>

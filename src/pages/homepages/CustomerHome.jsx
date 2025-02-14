@@ -21,6 +21,7 @@ import Contact from "./Contact";
 import BlogInfo from "./BlogInfo";
 import Shipping from "./Shipping";
 import Error from "./Error";
+import MyOrders from "./MyOrders";
 
 
 function CustomerHome() {
@@ -62,6 +63,7 @@ function CustomerHome() {
            <Route path="/faq" element={<Faq/>} />
            <Route path="/shipping" element={<Shipping/>} />
            <Route path="/contact" element={<Contact/>} />
+           <Route path="/orders" element={<MyOrders/>} />
            <Route path="/*" element={<Error/>} />
          </Routes>
        </div>
