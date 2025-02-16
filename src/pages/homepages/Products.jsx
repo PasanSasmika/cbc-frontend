@@ -8,13 +8,15 @@ import { motion } from 'framer-motion'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { Category, CategoryBar, HomePageAnimation } from '../../animations/animation'
+import Preloader from '../../components/Preloader'
 
 
 function Products() {
     const [products, setProducts] = useState([])
     const [loadingStatus, SetLoadingStatus] = useState("loading")
-    const [catBar, setCatBar] = useState(false)
-
+    const [catBar, setCatBar] = useState(false);
+    const [query, setQuery] = useState("")
+    
     useEffect(()=>{
         if(loadingStatus== "loading"){
         axios.get(import.meta.env.VITE_BACKEND_URL+ '/api/products').then(
@@ -37,7 +39,34 @@ function Products() {
     };
   
 
+
+    
+      function search(e){
+        const query  = e.target.value;
+        setQuery(query)
+        SetLoadingStatus("loading")
+        if(query == ""){
+         return;
+        }else{
+          axios.get(import.meta.env.VITE_BACKEND_URL+ '/api/products/search/'+query).then(
+            (res)=>{
+                console.log(res.data)
+                setProducts(res.data)
+                SetLoadingStatus('loaded')
+                
+            }
+        ).catch(
+            (err)=>toast.error('Error loading products')
+        )
+        }
+      }
+
   return (
+    <>
+    <div className="w-full flex absolute justify-center items-center mt-[500px]">
+  <input type="text"  placeholder='search' className='border-2 border-black' value={query} onChange={search} />
+    </div>
+    {loadingStatus=="loaded"&&
     <div className="w-full h-full flex-col bg-primary">
     <Header />
     <div className="w-full h-[370px] flex items-center justify-center mt-8 relative">
@@ -62,6 +91,7 @@ function Products() {
     </span>
   </div>
 
+    
  
   {catBar && (
     <div className="absolute top-0 left-0 w-full flex justify-center mt-2" onClick={() => setCatBar(false)}>
@@ -82,9 +112,12 @@ function Products() {
             <ProductCard key={product.id} product={product} />
         ))}
     </div>
-</div>
-
-
+</div>}
+{loadingStatus == "loading"&&
+    <div>
+      <Preloader/>
+    </div>}
+</>
   )
 }
 
