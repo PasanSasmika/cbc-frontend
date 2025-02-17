@@ -41,6 +41,7 @@ function AdminHome() {
         toast.error("Unauthorized access..!")
         navigate("/login")
       }else{
+        console.log(res.data)
         setUser(res.data)
       }
     }).catch((err)=>{
@@ -48,7 +49,7 @@ function AdminHome() {
       toast.error("Failed to fetch userData")
       navigate("/login")
     })
-  })
+  },[])
 
   return (
     <div className="w-full  h-screen bg-[#E7DED8] absolute flex items-center justify-center">
