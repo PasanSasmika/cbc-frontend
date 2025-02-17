@@ -64,7 +64,7 @@ function MyProfile() {
         {/* Cover Photo */}
         <div className="w-full h-48 bg-gray-200">
           <img
-            src={myDetails.coverPhoto || cover}
+            src={myDetails.coverpic || cover}
             alt="Cover"
             className="w-full h-full object-cover"
           />

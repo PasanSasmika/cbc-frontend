@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import image from "/facecream.jpg";
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -84,7 +85,9 @@ function Login() {
         >
           <FcGoogle className="text-xl mr-2" /> Login with Google
         </button>
+        <p className="text-black font-medium text-center relative top-3">Dont have account? <Link to="/signup"><span className='text-blue-900'>Sign up</span></Link></p>
       </div>
+      
     </div>
   );
 }
