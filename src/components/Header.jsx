@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '/logo.png'
 import { FaUser, FaShoppingCart } from 'react-icons/fa'
@@ -10,6 +10,13 @@ import { motion } from "framer-motion";
 function Header() {
   const [isSliderOpen , setIsSliderOpen] = useState(false)
   const [isMorePages, setIsMorePages] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
   return (
     <>
     {isSliderOpen&& 
@@ -79,7 +86,9 @@ function Header() {
 
     <div className='flex absolute right-0 mr-20'>
     <div className='flex w-12 h-12 border-2 border-accent rounded-full items-center justify-center'>
-    <Link to="/login"><div className='text-[20px]'> <FaUser/></div></Link>
+    <Link to={isLoggedIn ? "/profile" : "/login"}>
+                <div className='text-[20px]'> <FaUser /></div>
+              </Link>
     </div>
     <div className='flex w-12 h-12 border-2 ml-4 border-accent rounded-full items-center justify-center'>
       <Link to="/cart"><div className='text-[20px]'> <FaShoppingCart/></div></Link>
