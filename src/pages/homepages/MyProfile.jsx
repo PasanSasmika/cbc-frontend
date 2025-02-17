@@ -34,6 +34,30 @@ function MyProfile() {
       });
   }, []);
 
+
+  const handleLogout = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('You are not logged in.');
+      return;
+    }
+
+    axios
+      .post(import.meta.env.VITE_BACKEND_URL + '/api/users/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        localStorage.removeItem('token');
+        toast.success('Logged out successfully!');
+        window.location.href = '/';
+      })
+      .catch(() => {
+        toast.error('Logout failed, please try again.');
+      });
+  };
+
   return (
     <div className="flex flex-col items-center bg-primary py-10 px-4">
       <div className="relative w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
@@ -58,7 +82,7 @@ function MyProfile() {
           </div>
 
           {/* User Details */}
-          <h2 className="mt-4 text-2xl font-semibold text-gray-900">
+          <h2 className="mt-4 text-3xl font-accent  font-semibold text-gray-900">
             {myDetails.firstName} {myDetails.lastName}
           </h2>
           <p className="text-gray-600 text-lg">{myDetails.email}</p>
@@ -66,7 +90,8 @@ function MyProfile() {
 
           {/* Action Buttons */}
           <div className="mt-4 flex gap-4">
-  <button className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-300">
+  <button className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-300" 
+  onClick={handleLogout}>
     <FiLogOut />
     Logout
   </button>
