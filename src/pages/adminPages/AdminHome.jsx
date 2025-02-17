@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { BsBoxFill, BsCartCheckFill } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
@@ -14,10 +14,41 @@ import EditProductForm from './Products/EditProductForm';
 import EditBlogsForm from './Blogs/EditBlogsForm';
 import Error from '../homepages/Error';
 import Orders from './Orders/Orders';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import Preloader from '../../components/Preloader';
 
 function AdminHome() {
 
   const [notIsopen, setNotIsOpen] = useState(null);
+  const [user,setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if(!token){
+      toast.error("You are not vailde user. please login again.")
+      navigate("/login")
+      return;
+      
+    }
+    axios.get(import.meta.env.VITE_BACKEND_URL+ '/api/users',{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res)=>{
+      if(res.data.type!="admin"){
+        toast.error("Unauthorized access..!")
+        navigate("/login")
+      }else{
+        setUser(res.data)
+      }
+    }).catch((err)=>{
+      console.log(err)
+      toast.error("Failed to fetch userData")
+      navigate("/login")
+    })
+  })
 
   return (
     <div className="w-full  h-screen bg-[#E7DED8] absolute flex items-center justify-center">
@@ -146,6 +177,7 @@ function AdminHome() {
 
 
       <div className="w-[80%] h-[97vh] rounded-[16px] ml-2 bg-[#FBFCFC]">
+  {user!=null&&
   <Routes path="/*">
     <Route path='/' element={<h1>dashboard</h1>}/>
     <Route path='/orders' element={<Orders/>}/>
@@ -158,6 +190,11 @@ function AdminHome() {
     <Route path='/products/editproduct' element={<EditProductForm/>}/>
     <Route path='/*' element={<Error/>}/>
   </Routes>
+}
+{user==null&& 
+ <div>
+  <Preloader/>
+  </div>}
 </div>    
       </div>
 
