@@ -5,6 +5,8 @@ import MyOrders from './MyOrders';
 import cover from "/cover.png";
 import { MdEdit } from 'react-icons/md';
 import { FiLogOut } from 'react-icons/fi';
+import { motion } from "framer-motion";
+import { ProfileAnimation, ProfileAnimation3 } from '../../animations/animation';
 
 function MyProfile() {
   const [myDetails, setMyDetails] = useState({});
@@ -60,7 +62,7 @@ function MyProfile() {
 
   return (
     <div className="flex flex-col items-center bg-primary py-10 px-4">
-      <div className="relative w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
+      <motion.div {...ProfileAnimation()} className="relative w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Cover Photo */}
         <div className="w-full h-48 bg-gray-200">
           <img
@@ -101,7 +103,7 @@ function MyProfile() {
   </button>
 </div>
         </div>
-      </div>
+      </motion.div>
       
       {/* Orders Section */}
       <div className="w-full max-w-4xl mt-8">

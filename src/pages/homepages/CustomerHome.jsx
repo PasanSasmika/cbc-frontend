@@ -23,6 +23,7 @@ import Shipping from "./Shipping";
 import Error from "./Error";
 import MyOrders from "./MyOrders";
 import MyProfile from "./MyProfile";
+import AddReview from "./AddReview";
 
 
 function CustomerHome() {
@@ -64,8 +65,8 @@ function CustomerHome() {
            <Route path="/faq" element={<Faq/>} />
            <Route path="/shipping" element={<Shipping/>} />
            <Route path="/contact" element={<Contact/>} />
-           <Route path="/orders" element={<MyOrders/>} />
            <Route path="/profile" element={<MyProfile/>} />
+           <Route path="/review" element={<AddReview/>} />
            <Route path="/*" element={<Error/>} />
          </Routes>
        </div>

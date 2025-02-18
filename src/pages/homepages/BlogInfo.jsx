@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../../components/Header";
-import { div } from "framer-motion/client";
 
 function BlogInfo() {
   const location = useLocation();

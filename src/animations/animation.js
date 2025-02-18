@@ -32,77 +32,53 @@ export const HomePageAnimation = () => ({
   transition: {
     duration: 1,
   },
-  
 });
 
-
-
 export const HomePageAnimation2 = () => ({
-
   initial: { opacity: 0, scale: 0.8 },
 
   whileInView: { opacity: 1, scale: 1 },
-  
-  transition: { duration: .7 },
-  
+
+  transition: { duration: 0.7 },
 });
 
-
 export const SkinImprove1 = () => ({
+  initial: { x: -200 },
 
-  initial: { x: -200},
+  whileInView: { x: 1 },
 
-  whileInView: { x: 1 } ,
-    
   transition: { duration: 1.3 },
-
-    
 });
 
 export const SkinImprove2 = () => ({
-
-  
   initial: { opacity: 0, scale: 0 },
 
   whileInView: { opacity: 1, scale: 1 },
-  
-  transition: { duration: 1.1 },
 
-    
+  transition: { duration: 1.1 },
 });
 
+export const SkinImprove3 = () => ({
+  animate: { rotate: 360 },
+  transition: {
+    duration: 7,
+    repeat: Infinity,
+    ease: "linear",
+  },
+});
 
-      export const SkinImprove3 = () => ({
-
-  
-        animate:{ rotate: 360 },
-        transition:{
-        duration: 7, 
-        repeat: Infinity,
-        ease: "linear", 
-      }
-
-      
-          
- });
-
- export const SkinImprove4 = () => ({
-
+export const SkinImprove4 = () => ({
   initial: { y: 140 },
 
-  whileInView: { y:0 },
-  
+  whileInView: { y: 0 },
+
   transition: { duration: 1 },
-  
 });
 
-
 export const Headeranimation = () => ({
-
-  initial : { x: -300},
-  whileInView : {x: 0 },
+  initial: { x: -300 },
+  whileInView: { x: 0 },
   transition: { duration: 1 },
-  
 });
 
 export const CategoryBar = () => ({
@@ -130,23 +106,44 @@ export const Category = () => ({
   transition: {
     duration: 0.4,
   },
-  
 });
 
 export const About = () => ({
-  initial: { x: 300},
+  initial: { x: 300 },
 
-  whileInView: { x: 1 } ,
-    
+  whileInView: { x: 1 },
+
   transition: { duration: 1.3 },
-  
 });
 
 export const About2 = () => ({
-  initial: { x: -300},
+  initial: { x: -300 },
 
-  whileInView: { x: 1 } ,
-    
+  whileInView: { x: 1 },
+
   transition: { duration: 1.3 },
-  
+});
+
+export const ProfileAnimation = () => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+});
+
+export const ProfileAnimation2 = () => ({
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
+});
+
+export const ProfileAnimation3 = () => ({
+  initial: "hidden",
+  animate: "visible",
+  variants: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  },
 });
