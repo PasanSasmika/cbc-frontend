@@ -1,15 +1,16 @@
 import axios from "axios";
-import { button } from "framer-motion/client";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { BiPlus } from "react-icons/bi";
 import { ProfileAnimation, ProfileAnimation2, ProfileAnimation3 } from "../../animations/animation";
+import { useNavigate } from "react-router-dom";
 
 function MyOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -46,9 +47,10 @@ function MyOrders() {
     setSelectedOrder(null);
   };
 
-  function clicked(e) {
+  function clicked(e, order) {
     e.stopPropagation();
-    toast.success("success");
+    toast.success("Add a review");
+    navigate("/review", { state: { selectedOrder: order } });
   }
   return (
     <motion.div {...ProfileAnimation()} className="w-full min-h-screen flex flex-col items-center p-4 bg-primary">
@@ -88,13 +90,13 @@ function MyOrders() {
                       {order.status}
                     </span>
                     {order.status === "Delivered" && (
-                      <button
-                        className="flex items-center gap-3 mt-3 bg-blue-600 text-white px-5 py-2 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-blue-700 active:scale-95"
-                        onClick={(e) => clicked(e)}
-                      >
-                        <BiPlus size={18} />
-                        <span className="font-semibold">Add a review</span>
-                      </button>
+                     <button
+                     className="flex items-center gap-3 mt-3 bg-blue-600 text-white px-5 py-2 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-blue-700 active:scale-95"
+                     onClick={(e) => clicked(e, order)}
+                   >
+                     <BiPlus size={18} />
+                     <span className="font-semibold">Add a review</span>
+                   </button>
                     )}
                   </td>
                   <td className="p-2 sm:p-3 border-b">
