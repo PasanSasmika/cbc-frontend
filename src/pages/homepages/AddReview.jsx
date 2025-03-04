@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -7,24 +7,27 @@ import axios from 'axios';
 function AddReview() {
   const location = useLocation();
   const { selectedOrder } = location.state || {};
-  
+
+  // State hooks for user information and review details
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [productId, setProductId] = useState('');
   const [comment, setComment] = useState('');
   const [image, setImage] = useState(null);
+  const navigate = useNavigate();
 
   const handleReviewClick = (id) => {
-    console.log(productId)
     setProductId(id);
     setIsModalOpen(true);
   };
 
-  // const handleImageChange = (event) => {
-  //   setImage(event.target.files[0]);
-  // };
-
-    async function handleSubmit() {
-    const review = { comment };
+  async function handleSubmit() {
+    const review = { 
+      comment,
+      firstName,
+      lastName,
+    };
     const token = localStorage.getItem('token');
 
     try {
@@ -32,20 +35,16 @@ function AddReview() {
         `${import.meta.env.VITE_BACKEND_URL}/api/products/${productId}/review`, 
         review, 
         {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
      
       toast.success('Review added successfully!');
+      navigate('/')
     } catch (error) {
-      console.log(error)
       toast.error('Failed to add review!');
     }
   }
-
-  
-
-  
 
   return (
     <div className="w-full h-screen flex items-center justify-center bg-primary">
@@ -74,6 +73,7 @@ function AddReview() {
                 />
                 <div className="flex-1">
                   <p className="font-semibold text-gray-900">{item.name}</p>
+                  <p className="font-semibold text-gray-900">{item.productId}</p>
                 </div>
                 <button
                   className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg shadow-md hover:scale-105 transition"
@@ -101,43 +101,58 @@ function AddReview() {
           >
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Write a Review</h3>
             
-              <div className="mb-4">
-                <label htmlFor="review-text" className="block text-gray-700 mb-2">Review</label>
-                <textarea
-                  id="review-text"
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  className="w-full p-2 border rounded-lg focus:outline-none"
-                  rows="4"
-                  placeholder="Write your review here"
-                ></textarea>
-              </div>
-              {/* <div className="mb-4">
-                <label htmlFor="image" className="block text-gray-700 mb-2">Upload Image</label>
-                <input
-                  type="file"
-                  id="image"
-                  onChange={handleImageChange}
-                  className="w-full p-2 border rounded-lg focus:outline-none"
-                />
-              </div> */}
-              <div className="flex justify-end gap-4">
-                <button
-                  type="button"
-                  className="px-4 py-2 bg-gray-300 rounded-lg"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg"
-                  onClick={handleSubmit}
+            <div className="mb-4">
+              <label htmlFor="first-name" className="block text-gray-700 mb-2">First Name</label>
+              <input
+                type="text"
+                id="first-name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full p-2 border rounded-lg focus:outline-none"
+                placeholder="Your First Name"
+              />
+            </div>
 
-                >
-                  Submit Review
-                </button>
-              </div>
+            <div className="mb-4">
+              <label htmlFor="last-name" className="block text-gray-700 mb-2">Last Name</label>
+              <input
+                type="text"
+                id="last-name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full p-2 border rounded-lg focus:outline-none"
+                placeholder="Your Last Name"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="review-text" className="block text-gray-700 mb-2">Write your review</label>
+              <textarea
+                id="review-text"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                className="w-full p-2 border rounded-lg focus:outline-none"
+                rows="4"
+                placeholder="Write your review here"
+              ></textarea>
+            </div>
+
+            <div className="flex justify-end gap-4">
+              <button
+                type="button"
+                className="px-4 py-2 bg-gray-300 rounded-lg"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg"
+                onClick={handleSubmit}
+              >
+                Submit Review
+              </button>
+            </div>
           </motion.div>
         </div>
       )}

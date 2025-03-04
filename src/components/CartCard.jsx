@@ -33,6 +33,7 @@ function CartCard({ productId, qty }) {
 
           {/* Product Details */}
           <div className="flex-1 ml-4">
+            <h1>{product?.productId}</h1>
             <h3 className="text-lg font-semibold">{product?.productName}</h3>
             <p className="text-gray-500">LKR. {product?.lastPrice.toFixed(2)}</p>
           </div>

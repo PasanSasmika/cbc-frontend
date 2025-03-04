@@ -6,7 +6,7 @@ import { BiPlus } from "react-icons/bi";
 import { ProfileAnimation, ProfileAnimation2, ProfileAnimation3 } from "../../animations/animation";
 import { useNavigate } from "react-router-dom";
 
-function MyOrders() {
+function MyOrders({ userFirstName, userLastName }) {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
@@ -161,6 +161,7 @@ function MyOrders() {
                   />
                   <div>
                     <p className="font-semibold">{item.name}</p>
+                    <p>{item.productId}</p>
                     <p className="text-sm text-gray-600">
                       LKR {item.price.toFixed(2)} x {item.quantity} ={" "}
                       <span className="font-bold">

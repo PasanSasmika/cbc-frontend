@@ -5,6 +5,7 @@ import { addToCart } from '../../utils/cartFunctions';
 import toast from 'react-hot-toast';
 import Header from '../../components/Header';
 import Preloader from '../../components/Preloader';
+import ProductReview from './ProductReview';
 
 function ProductOverview() {
 
@@ -116,6 +117,7 @@ function ProductOverview() {
     </div>
   )}
 </div>
+<ProductReview productId={productId}/>
 </>
   )
 }
