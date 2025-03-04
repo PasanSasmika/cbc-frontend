@@ -68,7 +68,7 @@ function Products() {
                         onClick={search} 
                         className=" px-4 py-2 flex items-center justify-center text-secondary hover:bg-secondary-dark transition"
                     >
-                        <BiSearch size={22}/>
+                        <BiSearch size={21}/>
                     </button>
                 </div>
             </div>
