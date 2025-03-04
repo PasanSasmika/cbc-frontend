@@ -1,32 +1,51 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 function AddReview() {
   const location = useLocation();
   const { selectedOrder } = location.state || {};
   
-  // State to handle popup visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [productId, setProductId] = useState('');
-  const [reviewText, setReviewText] = useState('');
+  const [comment, setComment] = useState('');
   const [image, setImage] = useState(null);
 
-  // Function to handle opening the modal with the selected productId
   const handleReviewClick = (id) => {
+    console.log(productId)
     setProductId(id);
     setIsModalOpen(true);
   };
 
-  const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
-  };
+  // const handleImageChange = (event) => {
+  //   setImage(event.target.files[0]);
+  // };
 
-  const handleReviewSubmit = () => {
-    // Handle the review submission logic here
-    console.log({ productId, reviewText, image });
-    setIsModalOpen(false);
-  };
+    async function handleSubmit() {
+    const review = { comment };
+    const token = localStorage.getItem('token');
+
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/products/${productId}/review`, 
+        review, 
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+     
+      toast.success('Review added successfully!');
+    } catch (error) {
+      console.log(error)
+      toast.error('Failed to add review!');
+    }
+  }
+
+  
+
+  
 
   return (
     <div className="w-full h-screen flex items-center justify-center bg-primary">
@@ -81,19 +100,19 @@ function AddReview() {
             className="w-full max-w-lg bg-white p-6 rounded-lg shadow-xl"
           >
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Write a Review</h3>
-            <form onSubmit={handleReviewSubmit}>
+            
               <div className="mb-4">
                 <label htmlFor="review-text" className="block text-gray-700 mb-2">Review</label>
                 <textarea
                   id="review-text"
-                  value={reviewText}
-                  onChange={(e) => setReviewText(e.target.value)}
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
                   className="w-full p-2 border rounded-lg focus:outline-none"
                   rows="4"
                   placeholder="Write your review here"
                 ></textarea>
               </div>
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="image" className="block text-gray-700 mb-2">Upload Image</label>
                 <input
                   type="file"
@@ -101,7 +120,7 @@ function AddReview() {
                   onChange={handleImageChange}
                   className="w-full p-2 border rounded-lg focus:outline-none"
                 />
-              </div>
+              </div> */}
               <div className="flex justify-end gap-4">
                 <button
                   type="button"
@@ -113,11 +132,12 @@ function AddReview() {
                 <button
                   type="submit"
                   className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg"
+                  onClick={handleSubmit}
+
                 >
                   Submit Review
                 </button>
               </div>
-            </form>
           </motion.div>
         </div>
       )}
