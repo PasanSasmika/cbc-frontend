@@ -47,6 +47,8 @@ function AddBlogs() {
 
 
   return (
+
+    //blogs
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto max-w-2xl bg-white rounded-lg shadow-lg">
         <div className="p-6">
