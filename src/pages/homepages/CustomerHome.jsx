@@ -6,7 +6,6 @@ import Cart from "./Cart";
 import { FaOpencart } from "react-icons/fa";
 import Header from "../../components/Header";
 import Home from "./Home";
-import SkinImprove from "./SkinImprove";
 import GlowCollection from "./GlowCollection";
 import PassionPage from "./PassionPage";
 import Preloader from "../../components/Preloader";
@@ -47,7 +46,6 @@ function CustomerHome() {
                  <Home />
                  <PassionPage/>
                  <GlowCollection/>
-                 <SkinImprove/>
                  <ProductCollection/>
                  <SpecialProduct/>
                  <Footer/>

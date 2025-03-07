@@ -16,29 +16,35 @@ function ProductCollection() {
   };
 
   return (
-    <div className="w-full mx-auto p-8 bg-primary">
+    <div className="w-full mx-auto p-4 md:p-8 bg-primary">
       {/* Header Section */}
-      <motion.div {...HomePageAnimation2()} className="text-center mb-12">
-        <h1 className="font-main font-medium text-[42px] md:text-[48px] text-center mb-2">
+      <motion.div {...HomePageAnimation2()} className="text-center mb-8 md:mb-12">
+        <h1 className="font-main font-medium text-[32px] md:text-[42px] lg:text-[48px] text-center mb-2">
           Superior Skin Products
         </h1>
-        <p className="font-second  text-secondary text-[48px] md:text-[54px] relative text-center">
+        <p className="font-second text-secondary text-[36px] md:text-[48px] lg:text-[54px] relative text-center">
           Collection
         </p>
       </motion.div>
 
       {/* Grid Layout */}
-      <motion.div {...HomePageAnimation2()} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-5">
+      <motion.div 
+        {...HomePageAnimation2()} 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-0 md:ml-5"
+      >
         {/* Large Image */}
-        <div className="lg:col-span-1 row-span-2 cursor-pointer">
-          <div className="relative group rounded-lg overflow-hidden w-[400px] h-[600px]"  onClick={() => handleCategoryClick("skincare")}>
+        <div className="lg:col-span-1 lg:row-span-2 cursor-pointer">
+          <div 
+            className="relative group rounded-lg overflow-hidden w-full md:w-[400px] h-[300px] md:h-[600px]" 
+            onClick={() => handleCategoryClick("skincare")}
+          >
             <img
               src={image1}
               alt="Orange collection skincare products"
               className="w-full h-full object-cover"
             />
             <div className="absolute top-full left-0 opacity-0 group-hover:opacity-100 group-hover:top-0 p-4 w-full h-full bg-black/60 group-hover:backdrop-blur-sm duration-500 flex items-center justify-center">
-              <span className="font-main font-bold text-[46px] leading-tight text-white">
+              <span className="font-main font-bold text-[28px] md:text-[46px] leading-tight text-white">
                 Skincare
               </span>
             </div>
@@ -46,60 +52,72 @@ function ProductCollection() {
         </div>
 
         {/* Small Images */}
-        <div className="space-y-4  lg:col-span-2 -ml-16">
-          <div className="grid grid-cols-2 gap-4 cursor-pointer">
+        <div className="space-y-4 lg:col-span-2 ml-0 md:-ml-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 cursor-pointer">
             {/* Top Row Images */}
-            <div className="relative group rounded-lg overflow-hidden" onClick={() => handleCategoryClick("nailcare")}>
+            <div 
+              className="relative group rounded-lg overflow-hidden" 
+              onClick={() => handleCategoryClick("nailcare")}
+            >
               <img
                 src={image2}
                 alt="Beauty products flatlay"
-                className="w-full max-h-72 object-cover"
+                className="w-full h-[200px] md:h-72 object-cover"
               />
-               <div className="absolute top-full left-0 opacity-0 group-hover:opacity-100 group-hover:top-0 p-4 w-full h-full bg-black/60 group-hover:backdrop-blur-sm duration-500 flex items-center justify-center">
-              <span className="font-main font-bold text-[46px] leading-tight text-white">
-                Nailcare
-              </span>
+              <div className="absolute top-full left-0 opacity-0 group-hover:opacity-100 group-hover:top-0 p-4 w-full h-full bg-black/60 group-hover:backdrop-blur-sm duration-500 flex items-center justify-center">
+                <span className="font-main font-bold text-[28px] md:text-[46px] leading-tight text-white">
+                  Nailcare
+                </span>
+              </div>
             </div>
-            </div>
-            <div className="relative group rounded-lg overflow-hidden" onClick={() => handleCategoryClick("fragrance")}>
+            <div 
+              className="relative group rounded-lg overflow-hidden" 
+              onClick={() => handleCategoryClick("fragrance")}
+            >
               <img
                 src={image3}
                 alt="Pink nail polish collection"
-                className="w-full h-72 object-cover"
+                className="w-full h-[200px] md:h-72 object-cover"
               />
               <div className="absolute top-full left-0 opacity-0 group-hover:opacity-100 group-hover:top-0 p-4 w-full h-full bg-black/60 group-hover:backdrop-blur-sm duration-500 flex items-center justify-center">
-              <span className="font-main font-bold text-[46px] leading-tight text-white">
-              Fragrance
-              </span>
-            </div>
+                <span className="font-main font-bold text-[28px] md:text-[46px] leading-tight text-white">
+                  Fragrance
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 cursor-pointer">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 cursor-pointer">
             {/* Bottom Row Images */}
-            <div className="relative group rounded-lg overflow-hidden"  onClick={() => handleCategoryClick("bath&body")}>
+            <div 
+              className="relative group rounded-lg overflow-hidden" 
+              onClick={() => handleCategoryClick("bath&body")}
+            >
               <img
                 src={image5}
                 alt="Chanel perfume bottle"
-                className="w-full h-72 object-cover"
+                className="w-full h-[200px] md:h-72 object-cover"
               />
               <div className="absolute top-full left-0 opacity-0 group-hover:opacity-100 group-hover:top-0 p-4 w-full h-full bg-black/60 group-hover:backdrop-blur-sm duration-500 flex items-center justify-center">
-              <span className="font-main font-bold text-[46px] leading-tight text-white">
-                Bath & Body
-              </span>
+                <span className="font-main font-bold text-[28px] md:text-[46px] leading-tight text-white">
+                  Bath & Body
+                </span>
+              </div>
             </div>
-            </div>
-            <div className="relative group rounded-lg overflow-hidden" onClick={() => handleCategoryClick("makeup")}>
+            <div 
+              className="relative group rounded-lg overflow-hidden" 
+              onClick={() => handleCategoryClick("makeup")}
+            >
               <img
                 src={image4}
                 alt="Makeup products on purple background"
-                className="w-full h-72 object-cover"
+                className="w-full h-[200px] md:h-72 object-cover"
               />
               <div className="absolute top-full left-0 opacity-0 group-hover:opacity-100 group-hover:top-0 p-4 w-full h-full bg-black/60 group-hover:backdrop-blur-sm duration-500 flex items-center justify-center">
-              <span className="font-main font-bold text-[46px] leading-tight text-white">
-                Makeup
-              </span>
-            </div>
+                <span className="font-main font-bold text-[28px] md:text-[46px] leading-tight text-white">
+                  Makeup
+                </span>
+              </div>
             </div>
           </div>
         </div>
