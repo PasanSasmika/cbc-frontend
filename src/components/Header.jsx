@@ -132,7 +132,7 @@ function Header() {
               Pages
             </Link>
             {isMorePages && (
-              <div className="absolute w-[160px] flex flex-col gap-3 rounded-xl ml-20 justify-center p-3 mt-9 h-40 bg-accent z-30">
+              <div className="absolute w-[160px] flex flex-col gap-3 rounded-xl  justify-center p-3  h-40 bg-accent z-30">
                 <Link to="/blogs">
                   <h1 className="uppercase font-accent text-secondary hover:text-gray-600 text-[14px]">
                     Blogs
@@ -159,14 +159,14 @@ function Header() {
 
           {/* User and Cart Icons */}
           <div className="flex absolute right-0 mr-20">
-            <div className="flex w-12 h-12 border-2 border-accent rounded-full items-center justify-center">
+            <div className="flex w-12 h-12 border-2 ml-4 border-accent  items-center justify-center py-4 text-center uppercase font-accent text-secondary text-[20px] hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 rounded-full transition-all duration-300 transform hover:scale-105">
               <Link to={isLoggedIn ? '/profile' : '/login'}>
                 <div className="text-[20px]">
                   <FaUser />
                 </div>
               </Link>
             </div>
-            <div className="flex w-12 h-12 border-2 ml-4 border-accent rounded-full items-center justify-center">
+            <div className="flex w-12 h-12 border-2 ml-4 border-accent  items-center justify-center py-4 text-center uppercase font-accent text-secondary text-[20px] hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 rounded-full transition-all duration-300 transform hover:scale-105">
               <Link to="/cart">
                 <div className="text-[20px]">
                   <FaShoppingCart />

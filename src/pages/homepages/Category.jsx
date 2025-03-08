@@ -22,6 +22,9 @@ function Category() {
             console.error(err);
             setLoading(false); 
         });
+        
+        window.scrollTo(0, 0);
+
     }, [category]);
 
   return (
