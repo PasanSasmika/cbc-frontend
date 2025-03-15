@@ -24,8 +24,10 @@ function Blogs() {
           setBlogState("loaded");
         })
         .catch((err) => toast.error("Error loading blogs"));
+        window.scrollTo(0, 0);
+
     }
-  });
+  },[]);
   
   const blogNavigate = useNavigate();
 
