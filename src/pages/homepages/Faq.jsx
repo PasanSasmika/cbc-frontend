@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import image from "/faq.jpg";
 import image1 from "/nws.jpg";
 import image2 from "/faqH.jpg";
@@ -43,6 +43,10 @@ function Faq() {
     newOpenAnswers[id] = !newOpenAnswers[id];
     setOpenAnswers(newOpenAnswers);
   };
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+
+  })
 
   return (
     <div className="min-h-[120vh] w-full bg-primary">

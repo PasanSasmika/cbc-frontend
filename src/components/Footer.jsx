@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '/logo.png'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -17,14 +18,14 @@ function Footer() {
         </div>
 
         {/* Pages Section */}
-        <div>
+        <div className='flex flex-col'>
           <h3 className="font-main text-2xl md:text-[33px] font-semibold text-gray-800">Pages</h3>
           <ul className="space-y-2 mt-4">
-            <li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">Home</li>
-            <li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">Shop</li>
-            <li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">About Us</li>
-            <li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">Blogs</li>
-            <li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">FAQ</li>
+           <Link to="/"><li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">Home</li></Link> 
+           <Link to="/products"><li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">Shop</li></Link>
+           <Link to="/aboutus"><li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">About Us</li></Link>
+           <Link to="/blogs"><li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">Blogs</li></Link>
+           <Link to="/faq"><li className="text-gray-600 hover:text-gray-800 cursor-pointer font-accent text-base md:text-[18px] font-semibold">FAQ</li></Link>
           </ul>
         </div>
 
