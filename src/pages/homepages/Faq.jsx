@@ -46,7 +46,7 @@ function Faq() {
   useEffect(()=>{
     window.scrollTo(0, 0);
 
-  })
+  },[])
 
   return (
     <div className="min-h-[120vh] w-full bg-primary">
