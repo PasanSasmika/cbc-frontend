@@ -31,6 +31,8 @@ function CustomerHome() {
     setTimeout(() => {
       setLoading(false)
     }, 4200);
+    window.scrollTo(0, 0);
+
   },[])
   return (
     <>

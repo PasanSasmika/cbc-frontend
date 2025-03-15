@@ -58,12 +58,41 @@ function Header() {
             >
               Our Story
             </Link>
-            <Link
-              to="/contact"
-              className="w-full py-3 text-center uppercase font-accent text-secondary text-[20px] hover:bg-gray-100 rounded-lg transition-all duration-300"
-            >
-              Pages
-            </Link>
+            <div className="relative"
+         onMouseEnter={() => setIsMorePages(true)}
+        onMouseLeave={() => setIsMorePages(false)}
+>
+  <Link
+    to=""
+    className="w-full py-3 text-center uppercase font-accent text-secondary text-[20px] rounded-lg transition-all duration-300"
+  >
+    Pages
+  </Link>
+  {isMorePages && (
+    <div className="absolute w-[160px] flex flex-col gap-3 rounded-xl justify-center p-3 ml-20 h-40 bg-accent z-30 shadow-lg transform transition-all duration-300 origin-top">
+      <Link to="/blogs">
+        <h1 className="uppercase font-accent text-secondary hover:text-gray-600 text-[14px] transition-all duration-200">
+          Blogs
+        </h1>
+      </Link>
+      <Link to="/faq">
+        <h1 className="uppercase font-accent text-secondary hover:text-gray-600 text-[14px] transition-all duration-200">
+          FAQ
+        </h1>
+      </Link>
+      <Link to="/contact">
+        <h1 className="uppercase font-accent text-secondary hover:text-gray-600 text-[14px] transition-all duration-200">
+          Contact
+        </h1>
+      </Link>
+      <Link to="/products">
+        <h1 className="uppercase font-accent text-secondary hover:text-gray-600 text-[14px] transition-all duration-200">
+          Products
+        </h1>
+      </Link>
+    </div>
+  )}
+</div>
             <div className="w-full mt-6 flex flex-col gap-4">
               <Link
                 to={isLoggedIn ? '/profile' : '/login'}
@@ -89,6 +118,10 @@ function Header() {
         {/* Logo */}
         <div className="w-[164px] h-[164px] absolute hidden lg:block">
           <img src={logo} alt="Logo" className="relative bottom-8" />
+        </div>
+        <div className='lg:hidden flex flex-col w-[150px] items-center justify-center'>
+          <h1 className='pt-3 text-[18px] text-secondary font-main font-bold'>Crystal Beauty</h1>
+         <h2 className='text-[18px] font-main text-secondary'>Clear</h2>
         </div>
 
         {/* Mobile Hamburger Icon */}
