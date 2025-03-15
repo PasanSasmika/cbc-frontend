@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import image from "/image12.jpg";
 import image2 from "/about2.jpg";
@@ -20,6 +20,10 @@ function AboutUs() {
     const handleCategoryClick = (category) => {
       navigate(`/products/${category}`);
     };
+
+    useEffect(()=>{
+      window.scrollTo(0, 0);
+    },[])
   return (
     <div className=" min-h-[120vh] w-full bg-primary">
       <Header />
