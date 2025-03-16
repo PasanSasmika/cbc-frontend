@@ -17,6 +17,7 @@ import Orders from './Orders/Orders';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import Preloader from '../../components/Preloader';
+import AllUsers from './AllUsers';
 
 function AdminHome() {
 
@@ -39,7 +40,6 @@ function AdminHome() {
     }).then((res)=>{
       if(res.data.type!="admin"){
         toast.error("Unauthorized access..!")
-        navigate("/login")
       }else{
         console.log(res.data)
         setUser(res.data)
@@ -47,7 +47,6 @@ function AdminHome() {
     }).catch((err)=>{
       console.log(err)
       toast.error("Failed to fetch userData")
-      navigate("/login")
     })
   },[])
 
@@ -182,7 +181,7 @@ function AdminHome() {
   <Routes path="/*">
     <Route path='/' element={<h1>dashboard</h1>}/>
     <Route path='/orders' element={<Orders/>}/>
-    <Route path='/customers' element={<h1>customers</h1>}/>
+    <Route path='/customers' element={<AllUsers/>}/>
     <Route path='/products' element={<AdminProducts/>}/>
     <Route path='/blogs' element={<AdminBlogs/>}/>
     <Route path='/blogs/addblogs' element={<AddBlogs/>}/>
