@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { BsBoxFill, BsCartCheckFill } from "react-icons/bs";
-import { FaUsers } from "react-icons/fa";
+import { FaUsers, FaBars, FaTimes } from "react-icons/fa";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { motion } from "framer-motion";
 import { Animation, Animation2 } from '../../animations/animation';
@@ -17,191 +17,117 @@ import Orders from './Orders/Orders';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import Preloader from '../../components/Preloader';
+import AllUsers from './AllUsers';
+import ProductCharts from './Charts/ProductCharts';
 
 function AdminHome() {
-
   const [notIsopen, setNotIsOpen] = useState(null);
-  const [user,setUser] = useState(null);
+  const [user, setUser] = useState(null);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     const token = localStorage.getItem("token");
-    if(!token){
-      toast.error("You are not vailde user. please login again.")
-      navigate("/login")
+    if (!token) {
+      toast.error("You are not a valid user. Please login again.");
+      navigate("/login");
       return;
-      
     }
-    axios.get(import.meta.env.VITE_BACKEND_URL+ '/api/users',{
+    axios.get(import.meta.env.VITE_BACKEND_URL + '/api/users', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }).then((res)=>{
-      if(res.data.type!="admin"){
-        toast.error("Unauthorized access..!")
-        navigate("/login")
-      }else{
-        console.log(res.data)
-        setUser(res.data)
+    }).then((res) => {
+      if (res.data.type !== "admin") {
+        toast.error("Unauthorized access!");
+      } else {
+        setUser(res.data);
       }
-    }).catch((err)=>{
-      console.log(err)
-      toast.error("Failed to fetch userData")
-      navigate("/login")
-    })
-  },[])
+    }).catch((err) => {
+      console.log(err);
+      toast.error("Failed to fetch user data");
+    });
+  }, []);
 
   return (
-    <div className="w-full  h-screen bg-[#E7DED8] absolute flex items-center justify-center">
-      <div className="w-[276px] h-[97vh] bg-[#E7DED8] rounded-[16px]">
-        <div className="w-[100%] h-[97vh] rounded-[16px] bg-[#E7DED8]">
-          <h1 className="flex items-center justify-center text-[26px] p-6">
-            Dashboard
-          </h1>
-
-          <div className="w-[100px] h-[550px] bg-[#E7DED8] flex flex-col items-center justify-center gap-9">
-
-            {/*Dashboard*/}
-
-            <div className="relative">
-              <motion.div
-                {...Animation()}
-                className="w-[70px] h-[70px] rounded-full bg-[#FBFCFC] flex justify-center items-center text-[35px]"
-                onClick={() => setNotIsOpen("dashboard")}
-              >
-                <TbLayoutDashboardFilled />
-              </motion.div>
-              {notIsopen === "dashboard" && (
-            <Link to={"/admin/dashboard"}> <motion.h1
-                  layout
-                  {...Animation2()}
-                  className="absolute  font-third font-medium top-2 z-10 left-[90px] transform -translate-y-1/2 bg-gradient-to-r from-[#f2cdb4] to-[#daaa8a] 
-                  shadow-lg w-44 h-12 text-white text-[28px] px-4 py-2 rounded-lg flex items-center justify-center"
-                >
-                  Dashboard
-                </motion.h1> </Link> 
+    <div className="w-full h-screen bg-[#F5F5F5] flex">
+      {/* Sidebar */}
+      <div
+        className={`h-screen bg-[#1E293B] transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'
+          } shadow-lg`}
+      >
+        <div className="p-4 flex flex-col h-full">
+          {/* Sidebar Header */}
+          <div className="flex items-center justify-between mb-8">
+            {!isSidebarCollapsed && (
+              <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+            )}
+            <button
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className="text-white hover:text-[#1ABC9C] transition-all"
+            >
+              {isSidebarCollapsed ? (
+                <FaBars className="text-2xl" /> // Icon for collapsed state
+              ) : (
+                <FaTimes className="text-2xl" /> // Icon for expanded state
               )}
-            </div>
+            </button>
+          </div>
 
-              {/*Product*/}
+          {/* Sidebar Menu */}
+          <div className="flex flex-col gap-4">
+            {/* Dashboard */}
+            <Link to={"/admin/"} className="flex items-center gap-3 p-3 text-white hover:bg-[#1ABC9C] rounded-lg transition-all">
+              <TbLayoutDashboardFilled className="text-2xl" />
+              {!isSidebarCollapsed && <span className="text-lg">Dashboard</span>}
+            </Link>
 
-            <div className="relative">
-              <motion.div
-                {...Animation()}
-                className="w-[70px] h-[70px] rounded-full bg-[#FBFCFC] flex justify-center items-center text-[35px]"
-                onClick={() => setNotIsOpen("product")}
-              >
-                <BsBoxFill />
-              </motion.div>
-              {notIsopen === "product" && (
-             <Link to={"/admin/products"}><motion.h1
-                  layout
-                  {...Animation2()}
-                  className="absolute top-2 z-10 left-[90px] transform -translate-y-1/2 bg-gradient-to-r from-[#f2cdb4] to-[#daaa8a] 
-                  shadow-lg w-44 h-12 text-white text-[20px] font-semibold px-4 py-2 rounded-lg flex items-center justify-center"
-                >
-                  Products
-                </motion.h1></Link>
-              )}
-            </div>
+            {/* Products */}
+            <Link to={"/admin/products"} className="flex items-center gap-3 p-3 text-white hover:bg-[#1ABC9C] rounded-lg transition-all">
+              <BsBoxFill className="text-2xl" />
+              {!isSidebarCollapsed && <span className="text-lg">Products</span>}
+            </Link>
 
             {/* Orders */}
-
-            <div className="relative">
-              <motion.div
-                {...Animation()}
-                className="w-[70px] h-[70px] rounded-full bg-[#FBFCFC] flex justify-center items-center text-[35px]"
-                onClick={() => setNotIsOpen("orders")}
-              >
-                <BsCartCheckFill />
-              </motion.div>
-              {notIsopen === "orders" && (
-                <Link to={"/admin/orders"}> <motion.h1
-                  layout
-                  {...Animation2()}
-                  className="absolute top-2 z-10 left-[90px] transform -translate-y-1/2 bg-gradient-to-r from-[#f2cdb4] to-[#daaa8a] 
-                  shadow-lg w-44 h-12 text-white text-[20px] font-semibold px-4 py-2 rounded-lg flex items-center justify-center"
-                >
-                  Orders
-                </motion.h1></Link>
-              )}
-            </div>
-
+            <Link to={"/admin/orders"} className="flex items-center gap-3 p-3 text-white hover:bg-[#1ABC9C] rounded-lg transition-all">
+              <BsCartCheckFill className="text-2xl" />
+              {!isSidebarCollapsed && <span className="text-lg">Orders</span>}
+            </Link>
 
             {/* Customers */}
+            <Link to={"/admin/customers"} className="flex items-center gap-3 p-3 text-white hover:bg-[#1ABC9C] rounded-lg transition-all">
+              <FaUsers className="text-2xl" />
+              {!isSidebarCollapsed && <span className="text-lg">Customers</span>}
+            </Link>
 
-            <div className="relative">
-              <motion.div
-                {...Animation()}
-                className="w-[70px] h-[70px] rounded-full bg-[#FBFCFC] flex justify-center items-center text-[35px]"
-                onClick={() => setNotIsOpen("customers")}
-              >
-                <FaUsers />
-              </motion.div>
-              {notIsopen === "customers" && (
-                 <Link to={"/admin/customers"}><motion.h1
-                  layout
-                  {...Animation2()}
-                  className="absolute top-2 z-10 left-[90px] transform -translate-y-1/2 bg-gradient-to-r from-[#f2cdb4] to-[#daaa8a]
-                   shadow-lg w-44 h-12 text-white text-[20px] font-semibold px-4 py-2 rounded-lg flex items-center justify-center"
-                >
-                  Customers
-                </motion.h1></Link>
-              )}
-            </div>
-
-             {/* Blogs */}
-
-             <div className="relative">
-              <motion.div
-                {...Animation()}
-                className="w-[70px] h-[70px] rounded-full bg-[#FBFCFC] flex justify-center items-center text-[35px]"
-                onClick={() => setNotIsOpen("blogs")}
-              >
-                <FaNoteSticky />
-              </motion.div>
-              {notIsopen === "blogs" && (
-                 <Link to={"/admin/blogs"}><motion.h1
-                  layout
-                  {...Animation2()}
-                  className="absolute top-2 z-10 left-[90px] transform -translate-y-1/2 bg-gradient-to-r from-[#f2cdb4] to-[#daaa8a]
-                   shadow-lg w-44 h-12 text-white text-[20px] font-semibold px-4 py-2 rounded-lg flex items-center justify-center"
-                >
-                  Blogs
-                </motion.h1></Link>
-              )}
-            </div>
+            {/* Blogs */}
+            <Link to={"/admin/blogs"} className="flex items-center gap-3 p-3 text-white hover:bg-[#1ABC9C] rounded-lg transition-all">
+              <FaNoteSticky className="text-2xl" />
+              {!isSidebarCollapsed && <span className="text-lg">Blogs</span>}
+            </Link>
           </div>
         </div>
       </div>
-      
 
-
-      <div className="w-[80%] h-[97vh] rounded-[16px] ml-2 bg-[#FBFCFC]">
-  {user!=null&&
-  <Routes path="/*">
-    <Route path='/' element={<h1>dashboard</h1>}/>
-    <Route path='/orders' element={<Orders/>}/>
-    <Route path='/customers' element={<h1>customers</h1>}/>
-    <Route path='/products' element={<AdminProducts/>}/>
-    <Route path='/blogs' element={<AdminBlogs/>}/>
-    <Route path='/blogs/addblogs' element={<AddBlogs/>}/>
-    <Route path='/blogs/editblogs' element={<EditBlogsForm/>}/>
-    <Route path='/products/addproducts' element={<AddProductForm/>}/>
-    <Route path='/products/editproduct' element={<EditProductForm/>}/>
-    <Route path='/*' element={<Error/>}/>
-  </Routes>
-}
-{user==null&& 
- <div>
-  <Preloader/>
-  </div>}
-</div>    
+      {/* Main Content */}
+      <div className="w-[calc(100%-16rem)] h-screen bg-[#F5F5F5] p-6 overflow-y-auto">
+        {user != null && (
+          <Routes path="/*">
+            <Route path='/' element={<ProductCharts />} />
+            <Route path='/orders' element={<Orders />} />
+            <Route path='/customers' element={<AllUsers />} />
+            <Route path='/products' element={<AdminProducts />} />
+            <Route path='/blogs' element={<AdminBlogs />} />
+            <Route path='/blogs/addblogs' element={<AddBlogs />} />
+            <Route path='/blogs/editblogs' element={<EditBlogsForm />} />
+            <Route path='/products/addproducts' element={<AddProductForm />} />
+            <Route path='/products/editproduct' element={<EditProductForm />} />
+            <Route path='/*' element={<Error />} />
+          </Routes>
+        )}
+        {user == null && <Preloader />}
       </div>
-
-     
-      
-   
+    </div>
   );
 }
 
