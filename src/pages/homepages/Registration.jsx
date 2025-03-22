@@ -10,6 +10,8 @@ const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('');
  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const navigate = useNavigate()
 
   function registration() {
@@ -19,12 +21,25 @@ const [lastName, setLastName] = useState('');
         email,
         password
     }
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+      toast.error("All fields are required!");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match!');
+      return;
+    }
     axios.post(import.meta.env.VITE_BACKEND_URL + '/api/users/register', registerData).then((res) => {
         toast.success("Registration successfully")
        navigate("/login")
       })
       .catch((error) => {
-        toast.error("Registration unsuccessfully")
+        console.log(error)
+        toast.error(error.response?.data?.message || "Registration unsuccessful")
         
       })
      
@@ -79,6 +94,16 @@ const [lastName, setLastName] = useState('');
           placeholder="Password"
           value={password}
           onChange={(e)=> setPassword(e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div className="mb-4">
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e)=> setConfirmPassword(e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
