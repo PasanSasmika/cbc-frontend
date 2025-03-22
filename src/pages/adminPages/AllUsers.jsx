@@ -18,7 +18,22 @@ function AllUsers() {
                     setPageStatus("error");
                 });
         }
-    }, []);
+    }, []); const handleDelete = (userId) => {
+        const token = localStorage.getItem("token");
+
+        axios.delete(import.meta.env.VITE_BACKEND_URL + `/api/users/deleteuser/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        .then((res) => {
+            toast.success("User deleted successfully");
+            setUsers(users.filter(user => user._id !== userId));
+        })
+        .catch((error) => {
+            toast.error("Failed to delete user");
+        });
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 p-8">
@@ -52,8 +67,10 @@ function AllUsers() {
                                     <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200">
                                         {user.status === 'active' ? 'Block' : 'Unblock'}
                                     </button>
-                                    <button className="px-4 py-2 text-sm font-medium text-red-600 bg-red-100 rounded-md hover:bg-red-200">
+                                    <button className="px-4 py-2 text-sm font-medium text-red-600 bg-red-100 rounded-md hover:bg-red-200"
+                                     onClick={() => handleDelete(user._id)}>
                                         Delete
+                                        
                                     </button>
                                 </div>
                             </div>
