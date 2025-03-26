@@ -19,6 +19,7 @@ import toast from 'react-hot-toast';
 import Preloader from '../../components/Preloader';
 import AllUsers from './AllUsers';
 import ProductCharts from './Charts/ProductCharts';
+import { IoLogOut } from 'react-icons/io5';
 
 function AdminHome() {
   const [notIsopen, setNotIsOpen] = useState(null);
@@ -49,6 +50,28 @@ function AdminHome() {
     });
   }, []);
 
+  const handleLogout = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('You are not logged in.');
+      return;
+    }
+
+    axios
+      .post(import.meta.env.VITE_BACKEND_URL + '/api/users/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        localStorage.removeItem('token');
+        toast.success('Logged out successfully!');
+        window.location.href = '/';
+      })
+      .catch(() => {
+        toast.error('Logout failed, please try again.');
+      });
+  };
   return (
     <div className="w-full h-screen bg-[#F5F5F5] flex">
       {/* Sidebar */}
@@ -104,6 +127,11 @@ function AdminHome() {
             <Link to={"/admin/blogs"} className="flex items-center gap-3 p-3 text-white hover:bg-[#1ABC9C] rounded-lg transition-all">
               <FaNoteSticky className="text-2xl" />
               {!isSidebarCollapsed && <span className="text-lg">Blogs</span>}
+            </Link>
+
+            <Link to={"/"} className="flex items-center gap-3 p-3 text-white hover:bg-[#1ABC9C] rounded-lg transition-all">
+              <IoLogOut className="text-2xl" />
+              {!isSidebarCollapsed && <span className="text-lg"><button onClick={handleLogout}>Logout</button></span>}
             </Link>
           </div>
         </div>
