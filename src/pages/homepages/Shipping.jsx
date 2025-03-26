@@ -68,7 +68,7 @@ function Shipping() {
       .then((res) => {
         console.log(res.data)
         toast.success("Order placed successfully!");
-        navigate("/order-confirmation", { state: { orderId: res.data.orderId } });
+        navigate("/", { state: { orderId: res.data.orderId } });
       })
       .catch((err) => {
         toast.error("Failed to place order. Please try again.");
