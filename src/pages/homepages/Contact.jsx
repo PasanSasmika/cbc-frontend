@@ -26,6 +26,14 @@ function Contact() {
       message
     };
 
+    if (!name || !message || !email ||!subject ) {
+      toast.error("All fields are required!");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
     
   const token = localStorage.getItem('token');
 
