@@ -34,17 +34,6 @@ This project is built with **React JS**, **Tailwind CSS**, **Framer Motion**, an
 - **Charts:** Chart.js
 - **Version Control:** Git & GitHub
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-Make sure you have **Node.js** and **npm** installed.
-
-```bash
-node -v
-npm -v
-npm install
-npm run dev
 
 🧑‍💻 Developer
 Pasan Sasmika — GitHub
