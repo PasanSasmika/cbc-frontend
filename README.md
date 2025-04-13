@@ -34,6 +34,19 @@ This project is built with **React JS**, **Tailwind CSS**, **Framer Motion**, an
 - **Charts:** Chart.js
 - **Version Control:** Git & GitHub
 
+## 🧑‍💻 Developer
 
-🧑‍💻 Developer
-Pasan Sasmika — GitHub
+**Pasan Sasmika** — [GitHub](https://github.com/PasanSasmika)  
+📧 **Email:** pasansasmika@gmail.com  
+🔗 **LinkedIn:** [linkedin.com/in/pasansasmika](https://www.linkedin.com/in/pasansasmika/)
+
+
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-EF007C?style=for-the-badge&logo=framer&logoColor=white)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
