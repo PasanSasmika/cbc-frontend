@@ -38,7 +38,7 @@ This project is built with **React JS**, **Tailwind CSS**, **Framer Motion**, an
 
 **Pasan Sasmika** — [GitHub](https://github.com/PasanSasmika)  
 📧 **Email:** pasansasmika@gmail.com  
-🔗 **LinkedIn:** [linkedin.com/in/pasansasmika](https://www.linkedin.com/in/pasansasmika/)
+🔗 **LinkedIn:** [linkedin.com/in/pasansasmika](http://www.linkedin.com/in/pasan-sasmika)
 
 
 
